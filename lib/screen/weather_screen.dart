@@ -45,7 +45,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 SizedBox(
                   width: deviceWidthSize,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
                       TemperatureButton(text: 'Close'),
                       TemperatureButton(text: 'Reload'),
