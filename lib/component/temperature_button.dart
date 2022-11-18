@@ -10,11 +10,13 @@ class TemperatureButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 4,
-      child: TextButton(
-        onPressed: () {},
-        child: Text(text),
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width / 4,
+        child: TextButton(
+          onPressed: () {},
+          child: Text(text),
+        ),
       ),
     );
   }
