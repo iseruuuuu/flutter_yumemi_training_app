@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/temperature_item.dart';
+import 'package:yumemi_weather/yumemi_weather.dart';
+import 'package:flutter_svg/svg.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -10,6 +12,14 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
+  final weather = YumemiWeather();
+  String weatherImage = '';
+
+  void reloadWeather() {
+    weatherImage = weather.fetchSimpleWeather();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final deviceWidthSize = MediaQuery.of(context).size.width / 2;
@@ -21,7 +31,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
             child: SizedBox(
               width: deviceWidthSize,
               height: deviceWidthSize,
-              child: const Placeholder(),
+              child: weatherImage.isNotEmpty
+                  ? SvgPicture.asset('assets/images/$weatherImage.svg')
+                  : const Placeholder(),
             ),
           ),
           Padding(
@@ -45,9 +57,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 SizedBox(
                   width: deviceWidthSize,
                   child: Row(
-                    children: const [
-                      TemperatureButton(text: 'Close'),
-                      TemperatureButton(text: 'Reload'),
+                    children: [
+                      TemperatureButton(
+                        text: 'Close',
+                        onPressed: () {},
+                      ),
+                      TemperatureButton(
+                        text: 'Reload',
+                        onPressed: reloadWeather,
+                      ),
                     ],
                   ),
                 ),
