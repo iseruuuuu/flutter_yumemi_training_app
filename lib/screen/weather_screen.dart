@@ -12,22 +12,22 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
-    final deviceWidthSize = MediaQuery.of(context).size.width;
+    final deviceWidthSize = MediaQuery.of(context).size.width / 2;
     return Scaffold(
       body: Column(
         children: [
           const Spacer(flex: 2),
           Center(
             child: SizedBox(
-              width: deviceWidthSize / 2,
-              height: deviceWidthSize / 2,
+              width: deviceWidthSize,
+              height: deviceWidthSize,
               child: const Placeholder(),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: SizedBox(
-              width: deviceWidthSize / 2,
+              width: deviceWidthSize,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const [
@@ -43,7 +43,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               children: [
                 const SizedBox(height: 80),
                 SizedBox(
-                  width: deviceWidthSize / 2,
+                  width: deviceWidthSize,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
