@@ -15,8 +15,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
     final deviceWidthSize = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Spacer(flex: 2),
           Center(
             child: SizedBox(
               width: deviceWidthSize / 2,
@@ -37,14 +37,21 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 80),
-          SizedBox(
-            width: deviceWidthSize / 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                TemperatureButton(text: 'Close'),
-                TemperatureButton(text: 'Reload'),
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: [
+                const SizedBox(height: 80),
+                SizedBox(
+                  width: deviceWidthSize / 2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      TemperatureButton(text: 'Close'),
+                      TemperatureButton(text: 'Reload'),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
