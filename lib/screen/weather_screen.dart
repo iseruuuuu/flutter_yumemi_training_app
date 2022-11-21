@@ -15,9 +15,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
   final _weather = YumemiWeather();
   String _weatherImage = '';
 
-  void reloadWeather() {
+  void _reloadWeather() {
     _weatherImage = _weather.fetchSimpleWeather();
     setState(() {});
+  }
+
+  void _onTapBack() {
+    Navigator.of(context).pop();
   }
 
   @override
@@ -60,11 +64,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     children: [
                       TemperatureButton(
                         text: 'Close',
-                        onPressed: () {},
+                        onPressed: _onTapBack,
                       ),
                       TemperatureButton(
                         text: 'Reload',
-                        onPressed: reloadWeather,
+                        onPressed: _reloadWeather,
                       ),
                     ],
                   ),
