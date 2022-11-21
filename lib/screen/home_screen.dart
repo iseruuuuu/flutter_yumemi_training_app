@@ -16,15 +16,18 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.endOfFrame.then((_) => loadScreen());
   }
 
-  void loadScreen() {
-    Future.delayed(const Duration(milliseconds: 500), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute<dynamic>(
-          builder: (context) => const WeatherScreen(),
-        ),
-      );
-    });
+  Future<void> loadScreen() async {
+    await Future.delayed(const Duration(milliseconds: 500), () {});
+    if (!mounted) {
+      return;
+    }
+    await Navigator.push(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (context) => const WeatherScreen(),
+      ),
+    );
+    await loadScreen();
   }
 
   @override
