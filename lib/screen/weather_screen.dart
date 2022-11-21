@@ -20,6 +20,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
     setState(() {});
   }
 
+  void onTapBack() {
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     final deviceWidthSize = MediaQuery.of(context).size.width / 2;
@@ -60,7 +64,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     children: [
                       TemperatureButton(
                         text: 'Close',
-                        onPressed: () {},
+                        onPressed: onTapBack,
                       ),
                       TemperatureButton(
                         text: 'Reload',
