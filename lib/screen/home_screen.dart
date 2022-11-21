@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadScreen() async {
-    await Future.delayed(const Duration(milliseconds: 500), () {});
+    await Future<void>.delayed(const Duration(milliseconds: 500));
     if (!mounted) {
       return;
     }
