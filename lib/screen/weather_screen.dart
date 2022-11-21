@@ -12,11 +12,11 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  final weather = YumemiWeather();
-  String weatherImage = '';
+  final _weather = YumemiWeather();
+  String _weatherImage = '';
 
   void reloadWeather() {
-    weatherImage = weather.fetchSimpleWeather();
+    _weatherImage = _weather.fetchSimpleWeather();
     setState(() {});
   }
 
@@ -31,8 +31,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
             child: SizedBox(
               width: deviceWidthSize,
               height: deviceWidthSize,
-              child: weatherImage.isNotEmpty
-                  ? SvgPicture.asset('assets/images/$weatherImage.svg')
+              child: _weatherImage.isNotEmpty
+                  ? SvgPicture.asset('assets/images/$_weatherImage.svg')
                   : const Placeholder(),
             ),
           ),
