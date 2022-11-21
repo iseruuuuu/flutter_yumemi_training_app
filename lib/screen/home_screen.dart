@@ -13,10 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.endOfFrame.then((_) => loadScreen());
+    WidgetsBinding.instance.endOfFrame.then((_) => _loadScreen());
   }
 
-  Future<void> loadScreen() async {
+  Future<void> _loadScreen() async {
     await Future.delayed(const Duration(milliseconds: 500), () {});
     if (!mounted) {
       return;
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context) => const WeatherScreen(),
       ),
     );
-    await loadScreen();
+    await _loadScreen();
   }
 
   @override
