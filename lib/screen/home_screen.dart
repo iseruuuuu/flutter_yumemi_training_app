@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     await Navigator.push(
       context,
-      MaterialPageRoute<dynamic>(
+      MaterialPageRoute<void>(
         builder: (context) => const WeatherScreen(),
       ),
     );
