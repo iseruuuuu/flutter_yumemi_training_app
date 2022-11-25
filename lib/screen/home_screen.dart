@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with Mixin {
+class _HomeScreenState extends State<HomeScreen> with ProcessAfterLayoutMixin {
   @override
   Future<void> loadScreen() async {
     await Future<void>.delayed(const Duration(milliseconds: 500));
