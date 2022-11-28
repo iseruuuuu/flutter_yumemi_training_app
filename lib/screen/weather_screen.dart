@@ -20,11 +20,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
       _weatherImage = _weather.fetchThrowsWeather('tokyo');
       setState(() {});
     } on YumemiWeatherError catch (error) {
-      _checkError(error);
+      _convertYumemiWeatherError(error);
     }
   }
 
-  void _checkError(YumemiWeatherError error) {
+  void _convertYumemiWeatherError(YumemiWeatherError error) {
     var errorMessage = '';
     switch (error) {
       case YumemiWeatherError.unknown:
