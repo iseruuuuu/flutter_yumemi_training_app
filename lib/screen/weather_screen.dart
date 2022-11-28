@@ -19,9 +19,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
     try {
       _weatherImage = _weather.fetchThrowsWeather('tokyo');
     } on YumemiWeatherError catch (error) {
-      _openErrorDialog(error.toString());
+      _checkError(error);
     }
     setState(() {});
+  }
+
+  void _checkError(YumemiWeatherError error) {
+    var errorMessage = '';
+    switch (error) {
+      case YumemiWeatherError.unknown:
+        errorMessage = 'unknown';
+        break;
+      case YumemiWeatherError.invalidParameter:
+        errorMessage = 'invalidParameter';
+        break;
+    }
+    _openErrorDialog(errorMessage);
   }
 
   void _openErrorDialog(String error) {
