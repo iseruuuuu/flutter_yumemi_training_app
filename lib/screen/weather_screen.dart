@@ -26,7 +26,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   }
 
   String _convertYumemiWeatherError(YumemiWeatherError error) {
-    var errorMessage = '';
+    final String errorMessage;
     switch (error) {
       case YumemiWeatherError.unknown:
         errorMessage = 'unknown';
