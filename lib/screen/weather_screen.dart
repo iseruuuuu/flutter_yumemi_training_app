@@ -16,8 +16,30 @@ class _WeatherScreenState extends State<WeatherScreen> {
   String _weatherImage = '';
 
   void _reloadWeather() {
-    _weatherImage = _weather.fetchSimpleWeather();
+    try {
+      _weatherImage = _weather.fetchThrowsWeather('tokyo');
+    } on YumemiWeatherError catch (error) {
+      _openErrorDialog(error.toString());
+    }
     setState(() {});
+  }
+
+  void _openErrorDialog(String error) {
+    showDialog<void>(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: Text('error is $error'),
+          actions: [
+            TextButton(
+              onPressed: _onTapBack,
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _onTapBack() {
