@@ -24,7 +24,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     try {
       final loadJson = await rootBundle.loadString(constants.jsonFile);
       final getWeather = _weather.fetchWeather(loadJson);
-      final weatherJson = jsonDecode(getWeather);
+      final weatherJson = jsonDecode(getWeather) as Map<String, dynamic>;
       _weatherImage = weatherJson[constants.weatherCondition].toString();
       _highestTemperature = weatherJson[constants.maxTemperature].toString();
       _lowestTemperature = weatherJson[constants.minTemperature].toString();
