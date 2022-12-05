@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/temperature_item.dart';
@@ -22,9 +21,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Future<void> _reloadWeather() async {
     try {
-      final loadJson = await rootBundle.loadString(constants.jsonFile);
-      final getWeather = _weather.fetchWeather(loadJson);
-      final weatherJson = jsonDecode(getWeather) as Map<String, dynamic>;
+      final weatherJsonText = _weather.fetchWeather(constants.request);
+      final weatherJson = jsonDecode(weatherJsonText) as Map<String, dynamic>;
       _weatherImage = weatherJson[constants.weatherCondition].toString();
       _highestTemperature = weatherJson[constants.maxTemperature].toString();
       _lowestTemperature = weatherJson[constants.minTemperature].toString();
