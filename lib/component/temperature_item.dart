@@ -17,10 +17,9 @@ class TemperatureItem extends StatelessWidget {
       child: Text(
         '$temperature ℃',
         style:
-        Theme.of(context).textTheme.labelLarge?.copyWith(color: textColor),
+            Theme.of(context).textTheme.labelLarge?.copyWith(color: textColor),
         textAlign: TextAlign.center,
       ),
     );
   }
 }
-
