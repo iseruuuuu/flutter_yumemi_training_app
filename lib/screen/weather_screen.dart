@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/temperature_item.dart';
+import 'package:flutter_training/constants/weather_constants.dart' as constants;
 import 'package:yumemi_weather/yumemi_weather.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -14,10 +16,16 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   final _weather = YumemiWeather();
   String _weatherImage = '';
+  String _lowestTemperature = '**';
+  String _highestTemperature = '**';
 
-  void _reloadWeather() {
+  Future<void> _reloadWeather() async {
     try {
-      _weatherImage = _weather.fetchThrowsWeather('tokyo');
+      final weatherJsonText = _weather.fetchWeather(constants.request);
+      final weatherJson = jsonDecode(weatherJsonText) as Map<String, dynamic>;
+      _weatherImage = weatherJson[constants.weatherCondition].toString();
+      _highestTemperature = weatherJson[constants.maxTemperature].toString();
+      _lowestTemperature = weatherJson[constants.minTemperature].toString();
       setState(() {});
     } on YumemiWeatherError catch (error) {
       final errorMessage = _convertYumemiWeatherError(error);
@@ -82,9 +90,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
               width: deviceWidthSize,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  TemperatureItem(textColor: Colors.blue),
-                  TemperatureItem(textColor: Colors.red),
+                children: [
+                  TemperatureItem(
+                    textColor: Colors.blue,
+                    temperature: _lowestTemperature,
+                  ),
+                  TemperatureItem(
+                    textColor: Colors.red,
+                    temperature: _highestTemperature,
+                  ),
                 ],
               ),
             ),
