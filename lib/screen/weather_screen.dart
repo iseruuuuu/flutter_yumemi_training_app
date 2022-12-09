@@ -25,7 +25,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
     try {
       final encodeFromJson = jsonEncode(_weatherRequest.toJson());
       final loadWeatherJson = _weather.fetchWeather(encodeFromJson);
-      final decodeFromJson = jsonDecode(loadWeatherJson) as Map<String, dynamic>;
+      final decodeFromJson =
+          jsonDecode(loadWeatherJson) as Map<String, dynamic>;
       final result = WeatherResult.fromJson(decodeFromJson);
       _weatherImage = result.weatherCondition.name;
       _maxTemperature = result.maxTemperature.toString();
