@@ -213,7 +213,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.2"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -271,14 +271,14 @@ packages:
     source: hosted
     version: "0.6.5"
   json_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.7.0"
   json_serializable:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: json_serializable
       url: "https://pub.dartlang.org"
