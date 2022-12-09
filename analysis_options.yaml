@@ -1,8 +1,6 @@
 include: package:blendthink_lints/recommended.yaml
 
 analyzer:
-  exclude:
-    - "**/*.g.dart"
   errors:
     invalid_annotation_target: ignore
 
