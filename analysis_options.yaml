@@ -1,4 +1,8 @@
 include: package:blendthink_lints/recommended.yaml
 
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+
 linter:
   rules:

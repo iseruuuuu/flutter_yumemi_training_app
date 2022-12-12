@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/temperature_item.dart';
-import 'package:flutter_training/constants/weather_constants.dart' as constants;
+import 'package:flutter_training/model/weather_request.dart';
+import 'package:flutter_training/model/weather_result.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -16,16 +17,20 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   final _weather = YumemiWeather();
   String _weatherImage = '';
-  String _lowestTemperature = '**';
-  String _highestTemperature = '**';
+  String _minTemperature = '**';
+  String _maxTemperature = '**';
+  final _weatherRequest = const WeatherRequest();
 
   Future<void> _reloadWeather() async {
     try {
-      final weatherJsonText = _weather.fetchWeather(constants.request);
-      final weatherJson = jsonDecode(weatherJsonText) as Map<String, dynamic>;
-      _weatherImage = weatherJson[constants.weatherCondition].toString();
-      _highestTemperature = weatherJson[constants.maxTemperature].toString();
-      _lowestTemperature = weatherJson[constants.minTemperature].toString();
+      final encodeFromJson = jsonEncode(_weatherRequest.toJson());
+      final loadWeatherJson = _weather.fetchWeather(encodeFromJson);
+      final decodeFromJson =
+          jsonDecode(loadWeatherJson) as Map<String, dynamic>;
+      final result = WeatherResult.fromJson(decodeFromJson);
+      _weatherImage = result.weatherCondition.name;
+      _maxTemperature = result.maxTemperature.toString();
+      _minTemperature = result.minTemperature.toString();
       setState(() {});
     } on YumemiWeatherError catch (error) {
       final errorMessage = _convertYumemiWeatherError(error);
@@ -93,11 +98,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 children: [
                   TemperatureItem(
                     textColor: Colors.blue,
-                    temperature: _lowestTemperature,
+                    temperature: _minTemperature,
                   ),
                   TemperatureItem(
                     textColor: Colors.red,
-                    temperature: _highestTemperature,
+                    temperature: _maxTemperature,
                   ),
                 ],
               ),
