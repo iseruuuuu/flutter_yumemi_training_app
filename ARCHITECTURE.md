@@ -2,7 +2,6 @@
 
 2022/12/19（11時16分）
 ```mermaid
-Analyzing /Users/ryutaroiseki/work/yumemi_training_app ...
 flowchart TB
   subgraph Arrows
     direction LR
