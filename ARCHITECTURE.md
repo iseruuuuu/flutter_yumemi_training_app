@@ -23,6 +23,7 @@ flowchart TB
   WeatherForecastPanel((WeatherForecastPanel));
   weatherForecastPanelStateProvider ==> WeatherForecastPanel;
   WeatherScreen((WeatherScreen));
+  weatherScreenErrorProvider --> WeatherScreen;
   weatherScreenNotifierProvider -.-> WeatherScreen;
   weatherForecastPanelStateProvider[[weatherForecastPanelStateProvider]];
   weatherRepositoryProvider[[weatherRepositoryProvider]];
@@ -30,7 +31,7 @@ flowchart TB
   weatherRequestProvider[[weatherRequestProvider]];
   weatherScreenNotifierProvider[[weatherScreenNotifierProvider]];
   weatherRepositoryProvider ==> weatherScreenNotifierProvider;
-
+  weatherScreenErrorProvider[[weatherScreenErrorProvider]];
 
 ```
 
