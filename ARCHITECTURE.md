@@ -37,7 +37,6 @@ flowchart TB
   weatherRepositoryNotifierProvider ==> weatherScreenNotifierProvider;
   weatherScreenUiStateProvider[[weatherScreenUiStateProvider]];
 
-
 ```
 
 
