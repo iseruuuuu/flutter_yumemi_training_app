@@ -38,28 +38,40 @@ flowchart TB
 
 # View
 
-### WeatherScreen 
-・最低気温・最高気温の表示  　
-・YumemiWeatherを呼ぶためのボタンの設置  　   　　
-・画面遷移を戻るためのボタンの設置  　　
+### WeatherScreen
+・YumemiWeatherを呼ぶためのボタンの設置       
+・画面遷移を戻るためのボタンの設置  
+・`WeatherForecastPanel`の設置  
+・`WeatherScreenErrorState`をlistenしてエラー時にダイアログを出す。
 
 ### WeatherForecastPanel
 ・天気の画像の表示  
-
+・最低気温・最高気温の表示
 
 # Notifier
 
-### WeatherScreenNotifier
-・WeatherRepositoryNotifierから取得した天気のデータを読み取り、Screenに表示させる  
-・エラーの時のダイアログを出す。  
-・画面を戻る処理を記載している  
+### WeatherScreenNotifierProvider
+・天気の情報を取得する  
+・`weatherRepositoryUiState`のエラーメッセージが取得できた場合は、`WeatherScreenErrorState`にエラー文を渡す。    
+・エラーメッセージがない場合は、`WeatherForecastPanelState`に天気の情報を渡す。
 
-### WeatherRepositoryNotifier
-・YumemiWeatherAPIからデータを取得する。
+### WeatherRepositoryProvider
+・YumemiWeatherAPIからデータを取得する。　　  
+・取得できたデータを`WeatherRepositoryUiState`に渡す。  
+・エラーの場合は、`WeatherRepositoryUiState`にエラーの内容を渡す。
+
 
 # State
 
-### WeatherScreenUiState
-・天気の画像  
-・最低気温  
-・最高気温  
+### WeatherForecastPanelStateProvider
+・天気の画像(weatherCondition)  
+・最高気温(maxTemperature)    
+・最低気温(minTemperature)
+
+### WeatherScreenErrorProvider
+・エラー時のエラーメッセージ(errorMessage)
+
+### WeatherRequestProvider
+・エリア（area）  
+・日時（date）  
+
