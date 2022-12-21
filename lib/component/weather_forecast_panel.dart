@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_item.dart';
-import 'package:flutter_training/state/forecast_panel/weather_forecast_panel_state.dart';
+import 'package:flutter_training/state/weather_forecast_panel_state.dart';
 
 class WeatherForecastPanel extends ConsumerWidget {
   const WeatherForecastPanel({super.key});

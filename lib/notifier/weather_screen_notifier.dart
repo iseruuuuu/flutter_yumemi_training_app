@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_training/state/forecast_panel/weather_forecast_panel_state.dart';
-import 'package:flutter_training/state/repository/weather_repository_notifier.dart';
-import 'package:flutter_training/state/repository/weather_repository_ui_state.dart';
+import 'package:flutter_training/notifier/weather_repository_notifier.dart';
+import 'package:flutter_training/state/weather_forecast_panel_state.dart';
+import 'package:flutter_training/state/weather_repository_ui_state.dart';
 import 'package:flutter_training/state/weather_screen_error_state.dart';
 
 final weatherScreenNotifierProvider = Provider<WeatherScreenNotifier>(

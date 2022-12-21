@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_training/model/weather_request.dart';
 import 'package:flutter_training/model/weather_result.dart';
-import 'package:flutter_training/state/repository/weather_repository_ui_state.dart';
+import 'package:flutter_training/state/weather_repository_ui_state.dart';
+import 'package:flutter_training/state/weather_request.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
 final weatherRepositoryProvider = Provider<WeatherRepositoryNotifier>(
