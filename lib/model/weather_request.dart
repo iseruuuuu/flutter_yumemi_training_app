@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weather_request.freezed.dart';
@@ -16,3 +17,9 @@ class WeatherRequest with _$WeatherRequest {
   factory WeatherRequest.fromJson(Map<String, dynamic> json) =>
       _$WeatherRequestFromJson(json);
 }
+
+final weatherRequestProvider = StateProvider<WeatherRequest>(
+  (ref) {
+    return const WeatherRequest();
+  },
+);
