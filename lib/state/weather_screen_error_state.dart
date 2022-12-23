@@ -10,7 +10,7 @@ class WeatherScreenErrorState with _$WeatherScreenErrorState {
   }) = _WeatherScreenErrorState;
 }
 
-final weatherScreenErrorProvider = StateProvider<WeatherScreenErrorState>(
+final weatherScreenErrorStateProvider = StateProvider<WeatherScreenErrorState>(
   (ref) {
     return const WeatherScreenErrorState();
   },
