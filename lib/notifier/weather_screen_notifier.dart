@@ -65,7 +65,6 @@ class WeatherScreenNotifier extends StateNotifier<WeatherForecastPanelState> {
       case WeatherCondition.rainy:
         return Assets.images.rainy;
     }
-    return '';
   }
 
   String convertYumemiWeatherError(YumemiWeatherError error) {
