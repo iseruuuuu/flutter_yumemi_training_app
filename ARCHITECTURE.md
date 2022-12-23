@@ -23,18 +23,14 @@ flowchart TB
   WeatherForecastPanel((WeatherForecastPanel));
   weatherForecastPanelStateProvider ==> WeatherForecastPanel;
   WeatherScreen((WeatherScreen));
-  weatherScreenErrorProvider --> WeatherScreen;
+  weatherScreenErrorStateProvider --> WeatherScreen;
   weatherScreenNotifierProvider -.-> WeatherScreen;
-  weatherForecastPanelStateProvider[[weatherForecastPanelStateProvider]];
-  weatherRepositoryProvider[[weatherRepositoryProvider]];
-  weatherRequestProvider ==> weatherRepositoryProvider;
-  weatherRequestProvider[[weatherRequestProvider]];
   weatherScreenNotifierProvider[[weatherScreenNotifierProvider]];
-  weatherRepositoryProvider ==> weatherScreenNotifierProvider;
-  weatherScreenErrorProvider[[weatherScreenErrorProvider]];
-
+  weatherRequestStateProvider ==> weatherScreenNotifierProvider;
+  weatherRequestStateProvider[[weatherRequestStateProvider]];
+  weatherForecastPanelStateProvider[[weatherForecastPanelStateProvider]];
+  weatherScreenErrorStateProvider[[weatherScreenErrorStateProvider]];
 ```
-
 
 # View
 
@@ -51,15 +47,10 @@ flowchart TB
 # Notifier
 
 ### WeatherScreenNotifierProvider
-・天気の情報を取得する  
-・`weatherRepositoryUiState`のエラーメッセージが取得できた場合は、`WeatherScreenErrorState`にエラー文を渡す。    
-・エラーメッセージがない場合は、`WeatherForecastPanelState`に天気の情報を渡す。
-
-### WeatherRepositoryProvider
+・天気の情報を取得する   
 ・YumemiWeatherAPIからデータを取得する。　　  
-・取得できたデータを`WeatherRepositoryUiState`に渡す。  
-・エラーの場合は、`WeatherRepositoryUiState`にエラーの内容を渡す。
-
+・取得できたデータを`WeatherForecastPanelStateProvider`に渡す。  
+・エラーの場合は、`WeatherScreenErrorState`にエラーの内容を渡す。
 
 # State
 
