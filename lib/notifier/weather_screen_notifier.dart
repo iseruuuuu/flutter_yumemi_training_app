@@ -30,7 +30,7 @@ class WeatherScreenNotifier extends StateNotifier<WeatherForecastPanelState> {
       final weatherImage = repositoryUiState.weatherCondition;
       final maxTemperature = repositoryUiState.maxTemperature.toString();
       final minTemperature = repositoryUiState.minTemperature.toString();
-      ref.watch(weatherForecastPanelStateProvider.notifier).update(
+      ref.read(weatherForecastPanelStateProvider.notifier).update(
         (state) {
           return WeatherForecastPanelState(
             weatherImage: weatherImage,
@@ -40,7 +40,7 @@ class WeatherScreenNotifier extends StateNotifier<WeatherForecastPanelState> {
         },
       );
     } else {
-      ref.watch(weatherScreenErrorProvider.notifier).update(
+      ref.read(weatherScreenErrorStateProvider.notifier).update(
         (state) {
           return WeatherScreenErrorState(
             errorMessage: repositoryUiState.errorMessage,
