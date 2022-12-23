@@ -12,9 +12,8 @@ class WeatherScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final deviceWidthSize = MediaQuery.of(context).size.width / 2;
-    final readNotifier = ref.read(weatherScreenNotifierProvider);
     ref.listen<WeatherScreenErrorState>(
-      weatherScreenErrorProvider,
+      weatherScreenErrorStateProvider,
       (previous, error) {
         showDialog<void>(
           context: context,
@@ -45,7 +44,9 @@ class WeatherScreen extends ConsumerWidget {
                       ),
                       TemperatureButton(
                         text: 'Reload',
-                        onPressed: readNotifier.reloadWeather,
+                        onPressed: () => ref
+                            .read(weatherScreenNotifierProvider)
+                            .reloadWeather(),
                       ),
                     ],
                   ),
