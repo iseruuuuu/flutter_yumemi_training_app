@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WeatherForecastPanelState {
-  String get weatherImage => throw _privateConstructorUsedError;
+  String get weatherImageName => throw _privateConstructorUsedError;
   String get maxTemperature => throw _privateConstructorUsedError;
   String get minTemperature => throw _privateConstructorUsedError;
 
@@ -32,7 +32,7 @@ abstract class $WeatherForecastPanelStateCopyWith<$Res> {
       _$WeatherForecastPanelStateCopyWithImpl<$Res, WeatherForecastPanelState>;
   @useResult
   $Res call(
-      {String weatherImage, String maxTemperature, String minTemperature});
+      {String weatherImageName, String maxTemperature, String minTemperature});
 }
 
 /// @nodoc
@@ -49,14 +49,14 @@ class _$WeatherForecastPanelStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weatherImage = null,
+    Object? weatherImageName = null,
     Object? maxTemperature = null,
     Object? minTemperature = null,
   }) {
     return _then(_value.copyWith(
-      weatherImage: null == weatherImage
-          ? _value.weatherImage
-          : weatherImage // ignore: cast_nullable_to_non_nullable
+      weatherImageName: null == weatherImageName
+          ? _value.weatherImageName
+          : weatherImageName // ignore: cast_nullable_to_non_nullable
               as String,
       maxTemperature: null == maxTemperature
           ? _value.maxTemperature
@@ -80,7 +80,7 @@ abstract class _$$_WeatherForecastPanelStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String weatherImage, String maxTemperature, String minTemperature});
+      {String weatherImageName, String maxTemperature, String minTemperature});
 }
 
 /// @nodoc
@@ -96,14 +96,14 @@ class __$$_WeatherForecastPanelStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weatherImage = null,
+    Object? weatherImageName = null,
     Object? maxTemperature = null,
     Object? minTemperature = null,
   }) {
     return _then(_$_WeatherForecastPanelState(
-      weatherImage: null == weatherImage
-          ? _value.weatherImage
-          : weatherImage // ignore: cast_nullable_to_non_nullable
+      weatherImageName: null == weatherImageName
+          ? _value.weatherImageName
+          : weatherImageName // ignore: cast_nullable_to_non_nullable
               as String,
       maxTemperature: null == maxTemperature
           ? _value.maxTemperature
@@ -121,13 +121,13 @@ class __$$_WeatherForecastPanelStateCopyWithImpl<$Res>
 
 class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
   const _$_WeatherForecastPanelState(
-      {this.weatherImage = '',
+      {this.weatherImageName = '',
       this.maxTemperature = '**',
       this.minTemperature = '**'});
 
   @override
   @JsonKey()
-  final String weatherImage;
+  final String weatherImageName;
   @override
   @JsonKey()
   final String maxTemperature;
@@ -137,7 +137,7 @@ class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
 
   @override
   String toString() {
-    return 'WeatherForecastPanelState(weatherImage: $weatherImage, maxTemperature: $maxTemperature, minTemperature: $minTemperature)';
+    return 'WeatherForecastPanelState(weatherImageName: $weatherImageName, maxTemperature: $maxTemperature, minTemperature: $minTemperature)';
   }
 
   @override
@@ -145,8 +145,8 @@ class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WeatherForecastPanelState &&
-            (identical(other.weatherImage, weatherImage) ||
-                other.weatherImage == weatherImage) &&
+            (identical(other.weatherImageName, weatherImageName) ||
+                other.weatherImageName == weatherImageName) &&
             (identical(other.maxTemperature, maxTemperature) ||
                 other.maxTemperature == maxTemperature) &&
             (identical(other.minTemperature, minTemperature) ||
@@ -154,8 +154,8 @@ class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, weatherImage, maxTemperature, minTemperature);
+  int get hashCode => Object.hash(
+      runtimeType, weatherImageName, maxTemperature, minTemperature);
 
   @JsonKey(ignore: true)
   @override
@@ -167,12 +167,12 @@ class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
 
 abstract class _WeatherForecastPanelState implements WeatherForecastPanelState {
   const factory _WeatherForecastPanelState(
-      {final String weatherImage,
+      {final String weatherImageName,
       final String maxTemperature,
       final String minTemperature}) = _$_WeatherForecastPanelState;
 
   @override
-  String get weatherImage;
+  String get weatherImageName;
   @override
   String get maxTemperature;
   @override
