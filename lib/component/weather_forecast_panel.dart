@@ -18,10 +18,8 @@ class WeatherForecastPanel extends ConsumerWidget {
           child: SizedBox(
             width: deviceWidthSize,
             height: deviceWidthSize,
-            child: weatherForecastPanelState.weatherImage.isNotEmpty
-                ? SvgPicture.asset(
-                    'assets/images/${weatherForecastPanelState.weatherImage}.svg',
-                  )
+            child: weatherForecastPanelState.weatherImageName.isNotEmpty
+                ? SvgPicture.asset(weatherForecastPanelState.weatherImageName)
                 : const Placeholder(),
           ),
         ),
