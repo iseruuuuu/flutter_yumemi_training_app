@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_training/model/weather_result.dart';
 import 'package:flutter_training/state/weather_repository_ui_state.dart';
-import 'package:flutter_training/state/weather_request.dart';
+import 'package:flutter_training/state/weather_request_state.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
 final weatherRepositoryProvider = Provider<WeatherRepositoryNotifier>(
   (ref) {
-    final weatherRequest = ref.watch(weatherRequestProvider);
+    final weatherRequestState = ref.watch(weatherRequestStateProvider);
     return WeatherRepositoryNotifier(
       ref: ref,
-      weatherRequest: weatherRequest,
+      weatherRequestState: weatherRequestState,
     );
   },
 );
@@ -19,16 +19,16 @@ class WeatherRepositoryNotifier
     extends StateNotifier<WeatherRepositoryUiState> {
   WeatherRepositoryNotifier({
     required this.ref,
-    required this.weatherRequest,
+    required this.weatherRequestState,
   }) : super(const WeatherRepositoryUiState());
 
   final Ref ref;
-  final WeatherRequest weatherRequest;
+  final WeatherRequestState weatherRequestState;
   final _weather = YumemiWeather();
 
   Future<void> requestWeather() async {
     try {
-      final encodeFromJson = jsonEncode(weatherRequest.toJson());
+      final encodeFromJson = jsonEncode(weatherRequestState.toJson());
       final loadWeatherJson = _weather.fetchWeather(encodeFromJson);
       final decodeFromJson =
           jsonDecode(loadWeatherJson) as Map<String, dynamic>;
