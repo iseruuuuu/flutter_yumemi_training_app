@@ -6,7 +6,8 @@ import 'package:flutter_training/state/weather_request_state.dart';
 import 'package:flutter_training/state/weather_screen_error_state.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
-final weatherScreenNotifierProvider = Provider<WeatherScreenStateNotifier>(
+final weatherScreenNotifierProvider = StateNotifierProvider<
+    WeatherScreenStateNotifier, WeatherForecastPanelState>(
   (ref) {
     final weatherRequestState = ref.watch(weatherRequestStateProvider);
     return WeatherScreenStateNotifier(

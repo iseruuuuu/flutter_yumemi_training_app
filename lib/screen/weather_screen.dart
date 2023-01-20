@@ -45,7 +45,7 @@ class WeatherScreen extends ConsumerWidget {
                       TemperatureButton(
                         text: 'Reload',
                         onPressed: () => ref
-                            .read(weatherScreenNotifierProvider)
+                            .read(weatherScreenNotifierProvider.notifier)
                             .reloadWeather(),
                       ),
                     ],
