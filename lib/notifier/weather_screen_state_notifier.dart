@@ -1,25 +1,24 @@
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_training/constants/weather_constants.dart';
-import 'package:flutter_training/gen/assets.gen.dart';
 import 'package:flutter_training/model/weather_result.dart';
 import 'package:flutter_training/state/weather_forecast_panel_state.dart';
 import 'package:flutter_training/state/weather_request_state.dart';
 import 'package:flutter_training/state/weather_screen_error_state.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
-final weatherScreenNotifierProvider = Provider<WeatherScreenNotifier>(
+final weatherScreenNotifierProvider = Provider<WeatherScreenStateNotifier>(
   (ref) {
     final weatherRequestState = ref.watch(weatherRequestStateProvider);
-    return WeatherScreenNotifier(
+    return WeatherScreenStateNotifier(
       ref: ref,
       weatherRequestState: weatherRequestState,
     );
   },
 );
 
-class WeatherScreenNotifier extends StateNotifier<WeatherForecastPanelState> {
-  WeatherScreenNotifier({
+class WeatherScreenStateNotifier
+    extends StateNotifier<WeatherForecastPanelState> {
+  WeatherScreenStateNotifier({
     required this.ref,
     required this.weatherRequestState,
   }) : super(const WeatherForecastPanelState());
@@ -41,7 +40,7 @@ class WeatherScreenNotifier extends StateNotifier<WeatherForecastPanelState> {
       ref.read(weatherForecastPanelStateProvider.notifier).update(
         (state) {
           return WeatherForecastPanelState(
-            weatherImageName: getImage(weatherImage),
+            weatherImageName: weatherImage,
             minTemperature: minTemperature,
             maxTemperature: maxTemperature,
           );
@@ -53,17 +52,6 @@ class WeatherScreenNotifier extends StateNotifier<WeatherForecastPanelState> {
           errorMessage: convertYumemiWeatherError(error),
         );
       });
-    }
-  }
-
-  String getImage(WeatherCondition weatherCondition) {
-    switch (weatherCondition) {
-      case WeatherCondition.sunny:
-        return Assets.images.sunny;
-      case WeatherCondition.cloudy:
-        return Assets.images.cloudy;
-      case WeatherCondition.rainy:
-        return Assets.images.rainy;
     }
   }
 
