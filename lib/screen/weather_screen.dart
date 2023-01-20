@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_training/component/error_dialog.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/weather_forecast_panel.dart';
-import 'package:flutter_training/notifier/weather_screen_notifier.dart';
+import 'package:flutter_training/notifier/weather_screen_state_notifier.dart';
 import 'package:flutter_training/state/weather_screen_error_state.dart';
 
 class WeatherScreen extends ConsumerWidget {

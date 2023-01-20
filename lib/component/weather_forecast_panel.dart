@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_item.dart';
+import 'package:flutter_training/constants/weather_constants.dart';
 import 'package:flutter_training/state/weather_forecast_panel_state.dart';
 
 class WeatherForecastPanel extends ConsumerWidget {
@@ -18,8 +19,12 @@ class WeatherForecastPanel extends ConsumerWidget {
           child: SizedBox(
             width: deviceWidthSize,
             height: deviceWidthSize,
-            child: weatherForecastPanelState.weatherImageName.isNotEmpty
-                ? SvgPicture.asset(weatherForecastPanelState.weatherImageName)
+            child: weatherForecastPanelState.weatherImageName.name.isNotEmpty &&
+                    weatherForecastPanelState.weatherImageName !=
+                        WeatherCondition.none
+                ? SvgPicture.asset(
+                    'assets/images/${weatherForecastPanelState.weatherImageName.name}.svg',
+                  )
                 : const Placeholder(),
           ),
         ),

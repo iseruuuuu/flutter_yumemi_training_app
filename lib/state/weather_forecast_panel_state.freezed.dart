@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WeatherForecastPanelState {
-  String get weatherImageName => throw _privateConstructorUsedError;
+  WeatherCondition get weatherImageName => throw _privateConstructorUsedError;
   String get maxTemperature => throw _privateConstructorUsedError;
   String get minTemperature => throw _privateConstructorUsedError;
 
@@ -32,7 +32,9 @@ abstract class $WeatherForecastPanelStateCopyWith<$Res> {
       _$WeatherForecastPanelStateCopyWithImpl<$Res, WeatherForecastPanelState>;
   @useResult
   $Res call(
-      {String weatherImageName, String maxTemperature, String minTemperature});
+      {WeatherCondition weatherImageName,
+      String maxTemperature,
+      String minTemperature});
 }
 
 /// @nodoc
@@ -57,7 +59,7 @@ class _$WeatherForecastPanelStateCopyWithImpl<$Res,
       weatherImageName: null == weatherImageName
           ? _value.weatherImageName
           : weatherImageName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WeatherCondition,
       maxTemperature: null == maxTemperature
           ? _value.maxTemperature
           : maxTemperature // ignore: cast_nullable_to_non_nullable
@@ -80,7 +82,9 @@ abstract class _$$_WeatherForecastPanelStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String weatherImageName, String maxTemperature, String minTemperature});
+      {WeatherCondition weatherImageName,
+      String maxTemperature,
+      String minTemperature});
 }
 
 /// @nodoc
@@ -104,7 +108,7 @@ class __$$_WeatherForecastPanelStateCopyWithImpl<$Res>
       weatherImageName: null == weatherImageName
           ? _value.weatherImageName
           : weatherImageName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WeatherCondition,
       maxTemperature: null == maxTemperature
           ? _value.maxTemperature
           : maxTemperature // ignore: cast_nullable_to_non_nullable
@@ -121,13 +125,13 @@ class __$$_WeatherForecastPanelStateCopyWithImpl<$Res>
 
 class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
   const _$_WeatherForecastPanelState(
-      {this.weatherImageName = '',
+      {this.weatherImageName = WeatherCondition.none,
       this.maxTemperature = '**',
       this.minTemperature = '**'});
 
   @override
   @JsonKey()
-  final String weatherImageName;
+  final WeatherCondition weatherImageName;
   @override
   @JsonKey()
   final String maxTemperature;
@@ -167,12 +171,12 @@ class _$_WeatherForecastPanelState implements _WeatherForecastPanelState {
 
 abstract class _WeatherForecastPanelState implements WeatherForecastPanelState {
   const factory _WeatherForecastPanelState(
-      {final String weatherImageName,
+      {final WeatherCondition weatherImageName,
       final String maxTemperature,
       final String minTemperature}) = _$_WeatherForecastPanelState;
 
   @override
-  String get weatherImageName;
+  WeatherCondition get weatherImageName;
   @override
   String get maxTemperature;
   @override

@@ -27,6 +27,7 @@ Map<String, dynamic> _$$_WeatherResultToJson(_$_WeatherResult instance) =>
     };
 
 const _$WeatherConditionEnumMap = {
+  WeatherCondition.none: 'none',
   WeatherCondition.sunny: 'sunny',
   WeatherCondition.cloudy: 'cloudy',
   WeatherCondition.rainy: 'rainy',
