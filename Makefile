@@ -5,4 +5,5 @@ run:
 
 .PHONY: check
 check:
+	dart fix --apply
 	fvm flutter analyze
