@@ -38,7 +38,7 @@ Api --> Repository
 - screenから受け取った操作（ボタンのタップ）Usecaseに対して天気のデータを取得or更新を伝える役割になっている。
 
 ### usecase
-- 取得結果をViewModelに伝える役割になっている。
+- 取得結果（成功か失敗か）をViewModelに伝える役割になっている。
 
 ### repository
 - apiから取得したデータをアプリが使いやすい形に変換（Decode）し、Usecaseに渡す役割になっている。
