@@ -41,7 +41,7 @@ Api --> Repository
 - 取得結果（成功か失敗か）をViewModelに伝える役割になっている。
 
 ### repository
-- apiから取得したデータをアプリが使いやすい形に変換（Decode）し、Usecaseに渡す役割になっている。
+- apiから取得したデータをアプリが使いやすい形に変換し、Usecaseに渡す役割になっている。
 
 ### api
 - APIからデータを取得する
