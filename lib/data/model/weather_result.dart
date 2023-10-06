@@ -1,13 +1,20 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_training/constants/weather_constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weather_result.freezed.dart';
 
 part 'weather_result.g.dart';
 
+enum WeatherCondition {
+  none,
+  sunny,
+  cloudy,
+  rainy,
+}
+
 @freezed
 class WeatherResult with _$WeatherResult {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory WeatherResult({
     required WeatherCondition weatherCondition,
     required int maxTemperature,
