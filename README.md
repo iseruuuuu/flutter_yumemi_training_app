@@ -21,6 +21,25 @@ https://github.com/yumemi-inc/flutter-training-template
 ## Android
 - Android toolchain - develop for Android devices (Android SDK version 33.0.0)
 
+# フォルダ構成
+
+```
+- common
+  - constants
+- data
+  - api
+  - model
+  - repository
+  - usecase
+- ui
+  - component
+  - home
+  - weather
+- utils
+- main.dart
+
+```
+
 # セットアップ
 
 １、`git close https://github.com/iseruuuuu/flutter_yumemi_training_app.git`  
