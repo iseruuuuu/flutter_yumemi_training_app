@@ -11,7 +11,7 @@ part 'weather_screen_view_model.g.dart';
 class WeatherScreenViewModel extends _$WeatherScreenViewModel {
   @override
   WeatherScreenState build({
-    WeatherScreenState initState = const WeatherScreenState.empty(),
+    WeatherScreenState initState = const WeatherScreenState.initial(),
   }) {
     return initState;
   }

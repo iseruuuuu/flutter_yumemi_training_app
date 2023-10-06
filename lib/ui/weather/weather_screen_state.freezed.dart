@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WeatherScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function() initial,
     required TResult Function(WeatherCondition weatherCondition,
             String maxTemperature, String minTemperature)
         list,
@@ -26,7 +26,7 @@ mixin _$WeatherScreenState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? empty,
+    TResult? Function()? initial,
     TResult? Function(WeatherCondition weatherCondition, String maxTemperature,
             String minTemperature)?
         list,
@@ -34,7 +34,7 @@ mixin _$WeatherScreenState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function()? initial,
     TResult Function(WeatherCondition weatherCondition, String maxTemperature,
             String minTemperature)?
         list,
@@ -43,19 +43,19 @@ mixin _$WeatherScreenState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherScreenStateFirstEmpty value) empty,
+    required TResult Function(WeatherScreenStateInitial value) initial,
     required TResult Function(WeatherScreenStateList value) list,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherScreenStateFirstEmpty value)? empty,
+    TResult? Function(WeatherScreenStateInitial value)? initial,
     TResult? Function(WeatherScreenStateList value)? list,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherScreenStateFirstEmpty value)? empty,
+    TResult Function(WeatherScreenStateInitial value)? initial,
     TResult Function(WeatherScreenStateList value)? list,
     required TResult orElse(),
   }) =>
@@ -81,40 +81,39 @@ class _$WeatherScreenStateCopyWithImpl<$Res, $Val extends WeatherScreenState>
 }
 
 /// @nodoc
-abstract class _$$WeatherScreenStateFirstEmptyImplCopyWith<$Res> {
-  factory _$$WeatherScreenStateFirstEmptyImplCopyWith(
-          _$WeatherScreenStateFirstEmptyImpl value,
-          $Res Function(_$WeatherScreenStateFirstEmptyImpl) then) =
-      __$$WeatherScreenStateFirstEmptyImplCopyWithImpl<$Res>;
+abstract class _$$WeatherScreenStateInitialImplCopyWith<$Res> {
+  factory _$$WeatherScreenStateInitialImplCopyWith(
+          _$WeatherScreenStateInitialImpl value,
+          $Res Function(_$WeatherScreenStateInitialImpl) then) =
+      __$$WeatherScreenStateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$WeatherScreenStateFirstEmptyImplCopyWithImpl<$Res>
+class __$$WeatherScreenStateInitialImplCopyWithImpl<$Res>
     extends _$WeatherScreenStateCopyWithImpl<$Res,
-        _$WeatherScreenStateFirstEmptyImpl>
-    implements _$$WeatherScreenStateFirstEmptyImplCopyWith<$Res> {
-  __$$WeatherScreenStateFirstEmptyImplCopyWithImpl(
-      _$WeatherScreenStateFirstEmptyImpl _value,
-      $Res Function(_$WeatherScreenStateFirstEmptyImpl) _then)
+        _$WeatherScreenStateInitialImpl>
+    implements _$$WeatherScreenStateInitialImplCopyWith<$Res> {
+  __$$WeatherScreenStateInitialImplCopyWithImpl(
+      _$WeatherScreenStateInitialImpl _value,
+      $Res Function(_$WeatherScreenStateInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$WeatherScreenStateFirstEmptyImpl
-    implements WeatherScreenStateFirstEmpty {
-  const _$WeatherScreenStateFirstEmptyImpl();
+class _$WeatherScreenStateInitialImpl implements WeatherScreenStateInitial {
+  const _$WeatherScreenStateInitialImpl();
 
   @override
   String toString() {
-    return 'WeatherScreenState.empty()';
+    return 'WeatherScreenState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WeatherScreenStateFirstEmptyImpl);
+            other is _$WeatherScreenStateInitialImpl);
   }
 
   @override
@@ -123,36 +122,36 @@ class _$WeatherScreenStateFirstEmptyImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function() initial,
     required TResult Function(WeatherCondition weatherCondition,
             String maxTemperature, String minTemperature)
         list,
   }) {
-    return empty();
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? empty,
+    TResult? Function()? initial,
     TResult? Function(WeatherCondition weatherCondition, String maxTemperature,
             String minTemperature)?
         list,
   }) {
-    return empty?.call();
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function()? initial,
     TResult Function(WeatherCondition weatherCondition, String maxTemperature,
             String minTemperature)?
         list,
     required TResult orElse(),
   }) {
-    if (empty != null) {
-      return empty();
+    if (initial != null) {
+      return initial();
     }
     return orElse();
   }
@@ -160,38 +159,37 @@ class _$WeatherScreenStateFirstEmptyImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherScreenStateFirstEmpty value) empty,
+    required TResult Function(WeatherScreenStateInitial value) initial,
     required TResult Function(WeatherScreenStateList value) list,
   }) {
-    return empty(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherScreenStateFirstEmpty value)? empty,
+    TResult? Function(WeatherScreenStateInitial value)? initial,
     TResult? Function(WeatherScreenStateList value)? list,
   }) {
-    return empty?.call(this);
+    return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherScreenStateFirstEmpty value)? empty,
+    TResult Function(WeatherScreenStateInitial value)? initial,
     TResult Function(WeatherScreenStateList value)? list,
     required TResult orElse(),
   }) {
-    if (empty != null) {
-      return empty(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
 }
 
-abstract class WeatherScreenStateFirstEmpty implements WeatherScreenState {
-  const factory WeatherScreenStateFirstEmpty() =
-      _$WeatherScreenStateFirstEmptyImpl;
+abstract class WeatherScreenStateInitial implements WeatherScreenState {
+  const factory WeatherScreenStateInitial() = _$WeatherScreenStateInitialImpl;
 }
 
 /// @nodoc
@@ -287,7 +285,7 @@ class _$WeatherScreenStateListImpl implements WeatherScreenStateList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function() initial,
     required TResult Function(WeatherCondition weatherCondition,
             String maxTemperature, String minTemperature)
         list,
@@ -298,7 +296,7 @@ class _$WeatherScreenStateListImpl implements WeatherScreenStateList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? empty,
+    TResult? Function()? initial,
     TResult? Function(WeatherCondition weatherCondition, String maxTemperature,
             String minTemperature)?
         list,
@@ -309,7 +307,7 @@ class _$WeatherScreenStateListImpl implements WeatherScreenStateList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function()? initial,
     TResult Function(WeatherCondition weatherCondition, String maxTemperature,
             String minTemperature)?
         list,
@@ -324,7 +322,7 @@ class _$WeatherScreenStateListImpl implements WeatherScreenStateList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(WeatherScreenStateFirstEmpty value) empty,
+    required TResult Function(WeatherScreenStateInitial value) initial,
     required TResult Function(WeatherScreenStateList value) list,
   }) {
     return list(this);
@@ -333,7 +331,7 @@ class _$WeatherScreenStateListImpl implements WeatherScreenStateList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WeatherScreenStateFirstEmpty value)? empty,
+    TResult? Function(WeatherScreenStateInitial value)? initial,
     TResult? Function(WeatherScreenStateList value)? list,
   }) {
     return list?.call(this);
@@ -342,7 +340,7 @@ class _$WeatherScreenStateListImpl implements WeatherScreenStateList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(WeatherScreenStateFirstEmpty value)? empty,
+    TResult Function(WeatherScreenStateInitial value)? initial,
     TResult Function(WeatherScreenStateList value)? list,
     required TResult orElse(),
   }) {

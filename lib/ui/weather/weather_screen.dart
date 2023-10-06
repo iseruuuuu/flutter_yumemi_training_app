@@ -22,7 +22,7 @@ class WeatherScreen extends ConsumerWidget {
             minTemperature: min,
           );
         },
-        empty: () {
+        initial: () {
           return _WeatherBody(
             ref: ref,
             weatherCondition: WeatherCondition.none,
