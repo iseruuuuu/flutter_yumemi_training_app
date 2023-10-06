@@ -9,7 +9,7 @@ part of 'weather_screen_view_model.dart';
 // **************************************************************************
 
 String _$weatherScreenViewModelHash() =>
-    r'e913ff1b4bbfdd999192c3472157809cb2366228';
+    r'68f1967b42890e1d84050d21942e1cca6ba8e76a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,7 +37,7 @@ abstract class _$WeatherScreenViewModel
   late final WeatherScreenState initState;
 
   WeatherScreenState build({
-    WeatherScreenState initState = const WeatherScreenState.empty(),
+    WeatherScreenState initState = const WeatherScreenState.initial(),
   });
 }
 
@@ -52,7 +52,7 @@ class WeatherScreenViewModelFamily extends Family<WeatherScreenState> {
 
   /// See also [WeatherScreenViewModel].
   WeatherScreenViewModelProvider call({
-    WeatherScreenState initState = const WeatherScreenState.empty(),
+    WeatherScreenState initState = const WeatherScreenState.initial(),
   }) {
     return WeatherScreenViewModelProvider(
       initState: initState,
@@ -88,7 +88,7 @@ class WeatherScreenViewModelProvider extends AutoDisposeNotifierProviderImpl<
     WeatherScreenViewModel, WeatherScreenState> {
   /// See also [WeatherScreenViewModel].
   WeatherScreenViewModelProvider({
-    WeatherScreenState initState = const WeatherScreenState.empty(),
+    WeatherScreenState initState = const WeatherScreenState.initial(),
   }) : this._internal(
           () => WeatherScreenViewModel()..initState = initState,
           from: weatherScreenViewModelProvider,
