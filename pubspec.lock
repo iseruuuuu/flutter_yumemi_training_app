@@ -33,14 +33,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  blendthink_lints:
-    dependency: "direct dev"
-    description:
-      name: blendthink_lints
-      sha256: "9979c9d54227d5208f9e02090922adee6ae788b1dfee54ab9e4038a1c7db2256"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -218,10 +210,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: aeb0b80a8b3709709c9cc496cdc027c5b3216796bc0af0ce1007eaf24464fd4c
+      sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.3"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -403,6 +395,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  pedantic_mono:
+    dependency: "direct dev"
+    description:
+      name: pedantic_mono
+      sha256: b7ac7d8a9f8824ab053773599918d6c99d643ed63ce20b440a19fed028a80d63
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.24.0+1"
   petitparser:
     dependency: transitive
     description:
@@ -602,5 +602,5 @@ packages:
     source: git
     version: "1.0.0"
 sdks:
-  dart: ">=3.1.0-185.0.dev <4.0.0"
+  dart: ">=3.1.0 <4.0.0"
   flutter: ">=2.11.0-0.1.pre"

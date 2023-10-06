@@ -22,13 +22,13 @@ dependencies:
       path: packages/yumemi_weather
 
 dev_dependencies:
-  blendthink_lints: ^3.0.0
   build_runner: ^2.3.2
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
   freezed: ^2.3.2
   json_serializable: ^6.5.4
+  pedantic_mono: ^1.24.0+1
 
 flutter:
   uses-material-design: true
