@@ -16,8 +16,6 @@ class WeatherApi {
 
   final YumemiWeather yumemiWeather;
 
-  //DB（データベース）にアクセスして必要なデータを取って来る
-
   String fetchWeather(WeatherRequest weatherRequest) {
     final encodeWeatherRequest = jsonEncode(weatherRequest);
     final weather = yumemiWeather.fetchWeather(encodeWeatherRequest);

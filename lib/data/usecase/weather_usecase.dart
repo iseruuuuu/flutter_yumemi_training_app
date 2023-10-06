@@ -19,12 +19,9 @@ class WeatherUsecase {
 
   final WeatherRepository weatherRepository;
 
-  //WeatherResult・・・成功時の値
-  //String・・・失敗した時の値
   Result<WeatherResult, String> getWeather(WeatherRequest weatherRequest) {
     try {
       final data = weatherRepository.getWeather(weatherRequest);
-      //Map<String, dynamic>からWeatherResultの変換
       final result = WeatherResult.fromJson(data);
       return Result.success(result);
     } on YumemiWeatherError catch (error) {

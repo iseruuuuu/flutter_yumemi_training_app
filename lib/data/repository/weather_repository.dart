@@ -19,7 +19,6 @@ class WeatherRepository {
 
   Map<String, dynamic> getWeather(WeatherRequest weatherRequest) {
     final weather = weatherApi.fetchWeather(weatherRequest);
-    // fetchWeather→Map<String, dynamic>に変換
     final weatherDecode = jsonDecode(weather) as Map<String, dynamic>;
     return weatherDecode;
   }
