@@ -8,9 +8,9 @@ class WeatherScreenState with _$WeatherScreenState {
   /// 初期状態
   const factory WeatherScreenState.initial() = WeatherScreenStateInitial;
 
-  const factory WeatherScreenState.list({
+  const factory WeatherScreenState.data({
     required WeatherCondition weatherCondition,
     required String maxTemperature,
     required String minTemperature,
-  }) = WeatherScreenStateList;
+  }) = WeatherScreenStateData;
 }

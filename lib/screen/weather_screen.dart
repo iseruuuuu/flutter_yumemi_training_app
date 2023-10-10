@@ -14,7 +14,7 @@ class WeatherScreen extends ConsumerWidget {
     final state = ref.watch(weatherScreenViewModelProvider());
     return Scaffold(
       body: state.when(
-        list: (weather, max, min) {
+        data: (weather, max, min) {
           return _WeatherBody(
             ref: ref,
             weatherCondition: weather,
