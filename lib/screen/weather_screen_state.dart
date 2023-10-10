@@ -5,7 +5,7 @@ part 'weather_screen_state.freezed.dart';
 
 @freezed
 class WeatherScreenState with _$WeatherScreenState {
-  //初期状態
+  /// 初期状態
   const factory WeatherScreenState.initial() = WeatherScreenStateInitial;
 
   const factory WeatherScreenState.list({
