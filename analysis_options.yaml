@@ -1,4 +1,4 @@
-include: package:blendthink_lints/recommended.yaml
+include: package:pedantic_mono/analysis_options.yaml
 
 analyzer:
   errors:
