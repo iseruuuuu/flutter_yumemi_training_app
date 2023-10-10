@@ -10,6 +10,7 @@ targets:
             - strict_raw_type
             - lines_longer_than_80_chars
             - unnecessary_null_checks
+            - require_trailing_commas
       json_serializable:
         options:
           field_rename: snake

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, lines_longer_than_80_chars, unnecessary_null_checks
+// ignore_for_file: implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, lines_longer_than_80_chars, unnecessary_null_checks, require_trailing_commas
 
 part of 'weather_result.dart';
 
