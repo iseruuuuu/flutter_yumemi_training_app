@@ -84,11 +84,11 @@ class _$WeatherResultCopyWithImpl<$Res, $Val extends WeatherResult>
 }
 
 /// @nodoc
-abstract class _$$_WeatherResultCopyWith<$Res>
+abstract class _$$WeatherResultImplCopyWith<$Res>
     implements $WeatherResultCopyWith<$Res> {
-  factory _$$_WeatherResultCopyWith(
-          _$_WeatherResult value, $Res Function(_$_WeatherResult) then) =
-      __$$_WeatherResultCopyWithImpl<$Res>;
+  factory _$$WeatherResultImplCopyWith(
+          _$WeatherResultImpl value, $Res Function(_$WeatherResultImpl) then) =
+      __$$WeatherResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,11 +99,11 @@ abstract class _$$_WeatherResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WeatherResultCopyWithImpl<$Res>
-    extends _$WeatherResultCopyWithImpl<$Res, _$_WeatherResult>
-    implements _$$_WeatherResultCopyWith<$Res> {
-  __$$_WeatherResultCopyWithImpl(
-      _$_WeatherResult _value, $Res Function(_$_WeatherResult) _then)
+class __$$WeatherResultImplCopyWithImpl<$Res>
+    extends _$WeatherResultCopyWithImpl<$Res, _$WeatherResultImpl>
+    implements _$$WeatherResultImplCopyWith<$Res> {
+  __$$WeatherResultImplCopyWithImpl(
+      _$WeatherResultImpl _value, $Res Function(_$WeatherResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +114,7 @@ class __$$_WeatherResultCopyWithImpl<$Res>
     Object? minTemperature = null,
     Object? date = null,
   }) {
-    return _then(_$_WeatherResult(
+    return _then(_$WeatherResultImpl(
       weatherCondition: null == weatherCondition
           ? _value.weatherCondition
           : weatherCondition // ignore: cast_nullable_to_non_nullable
@@ -136,17 +136,18 @@ class __$$_WeatherResultCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_WeatherResult extends _WeatherResult with DiagnosticableTreeMixin {
-  const _$_WeatherResult(
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _$WeatherResultImpl extends _WeatherResult with DiagnosticableTreeMixin {
+  const _$WeatherResultImpl(
       {required this.weatherCondition,
       required this.maxTemperature,
       required this.minTemperature,
       required this.date})
       : super._();
 
-  factory _$_WeatherResult.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherResultFromJson(json);
+  factory _$WeatherResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeatherResultImplFromJson(json);
 
   @override
   final WeatherCondition weatherCondition;
@@ -177,7 +178,7 @@ class _$_WeatherResult extends _WeatherResult with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherResult &&
+            other is _$WeatherResultImpl &&
             (identical(other.weatherCondition, weatherCondition) ||
                 other.weatherCondition == weatherCondition) &&
             (identical(other.maxTemperature, maxTemperature) ||
@@ -195,12 +196,12 @@ class _$_WeatherResult extends _WeatherResult with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WeatherResultCopyWith<_$_WeatherResult> get copyWith =>
-      __$$_WeatherResultCopyWithImpl<_$_WeatherResult>(this, _$identity);
+  _$$WeatherResultImplCopyWith<_$WeatherResultImpl> get copyWith =>
+      __$$WeatherResultImplCopyWithImpl<_$WeatherResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherResultToJson(
+    return _$$WeatherResultImplToJson(
       this,
     );
   }
@@ -211,11 +212,11 @@ abstract class _WeatherResult extends WeatherResult {
       {required final WeatherCondition weatherCondition,
       required final int maxTemperature,
       required final int minTemperature,
-      required final DateTime date}) = _$_WeatherResult;
+      required final DateTime date}) = _$WeatherResultImpl;
   const _WeatherResult._() : super._();
 
   factory _WeatherResult.fromJson(Map<String, dynamic> json) =
-      _$_WeatherResult.fromJson;
+      _$WeatherResultImpl.fromJson;
 
   @override
   WeatherCondition get weatherCondition;
@@ -227,6 +228,6 @@ abstract class _WeatherResult extends WeatherResult {
   DateTime get date;
   @override
   @JsonKey(ignore: true)
-  _$$_WeatherResultCopyWith<_$_WeatherResult> get copyWith =>
+  _$$WeatherResultImplCopyWith<_$WeatherResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

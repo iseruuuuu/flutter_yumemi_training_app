@@ -68,22 +68,22 @@ class _$WeatherRequestCopyWithImpl<$Res, $Val extends WeatherRequest>
 }
 
 /// @nodoc
-abstract class _$$_WeatherRequestCopyWith<$Res>
+abstract class _$$WeatherRequestImplCopyWith<$Res>
     implements $WeatherRequestCopyWith<$Res> {
-  factory _$$_WeatherRequestCopyWith(
-          _$_WeatherRequest value, $Res Function(_$_WeatherRequest) then) =
-      __$$_WeatherRequestCopyWithImpl<$Res>;
+  factory _$$WeatherRequestImplCopyWith(_$WeatherRequestImpl value,
+          $Res Function(_$WeatherRequestImpl) then) =
+      __$$WeatherRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String area, String date});
 }
 
 /// @nodoc
-class __$$_WeatherRequestCopyWithImpl<$Res>
-    extends _$WeatherRequestCopyWithImpl<$Res, _$_WeatherRequest>
-    implements _$$_WeatherRequestCopyWith<$Res> {
-  __$$_WeatherRequestCopyWithImpl(
-      _$_WeatherRequest _value, $Res Function(_$_WeatherRequest) _then)
+class __$$WeatherRequestImplCopyWithImpl<$Res>
+    extends _$WeatherRequestCopyWithImpl<$Res, _$WeatherRequestImpl>
+    implements _$$WeatherRequestImplCopyWith<$Res> {
+  __$$WeatherRequestImplCopyWithImpl(
+      _$WeatherRequestImpl _value, $Res Function(_$WeatherRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_WeatherRequestCopyWithImpl<$Res>
     Object? area = null,
     Object? date = null,
   }) {
-    return _then(_$_WeatherRequest(
+    return _then(_$WeatherRequestImpl(
       area: null == area
           ? _value.area
           : area // ignore: cast_nullable_to_non_nullable
@@ -107,13 +107,13 @@ class __$$_WeatherRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WeatherRequest extends _WeatherRequest {
-  const _$_WeatherRequest(
+class _$WeatherRequestImpl extends _WeatherRequest {
+  const _$WeatherRequestImpl(
       {this.area = 'tokyo', this.date = '2020-04-01T12:00:00+09:00'})
       : super._();
 
-  factory _$_WeatherRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_WeatherRequestFromJson(json);
+  factory _$WeatherRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WeatherRequestImplFromJson(json);
 
   @override
   @JsonKey()
@@ -131,7 +131,7 @@ class _$_WeatherRequest extends _WeatherRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WeatherRequest &&
+            other is _$WeatherRequestImpl &&
             (identical(other.area, area) || other.area == area) &&
             (identical(other.date, date) || other.date == date));
   }
@@ -143,12 +143,13 @@ class _$_WeatherRequest extends _WeatherRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WeatherRequestCopyWith<_$_WeatherRequest> get copyWith =>
-      __$$_WeatherRequestCopyWithImpl<_$_WeatherRequest>(this, _$identity);
+  _$$WeatherRequestImplCopyWith<_$WeatherRequestImpl> get copyWith =>
+      __$$WeatherRequestImplCopyWithImpl<_$WeatherRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WeatherRequestToJson(
+    return _$$WeatherRequestImplToJson(
       this,
     );
   }
@@ -156,11 +157,11 @@ class _$_WeatherRequest extends _WeatherRequest {
 
 abstract class _WeatherRequest extends WeatherRequest {
   const factory _WeatherRequest({final String area, final String date}) =
-      _$_WeatherRequest;
+      _$WeatherRequestImpl;
   const _WeatherRequest._() : super._();
 
   factory _WeatherRequest.fromJson(Map<String, dynamic> json) =
-      _$_WeatherRequest.fromJson;
+      _$WeatherRequestImpl.fromJson;
 
   @override
   String get area;
@@ -168,6 +169,6 @@ abstract class _WeatherRequest extends WeatherRequest {
   String get date;
   @override
   @JsonKey(ignore: true)
-  _$$_WeatherRequestCopyWith<_$_WeatherRequest> get copyWith =>
+  _$$WeatherRequestImplCopyWith<_$WeatherRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

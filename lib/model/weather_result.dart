@@ -8,6 +8,7 @@ part 'weather_result.g.dart';
 
 @freezed
 class WeatherResult with _$WeatherResult {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory WeatherResult({
     required WeatherCondition weatherCondition,
     required int maxTemperature,
