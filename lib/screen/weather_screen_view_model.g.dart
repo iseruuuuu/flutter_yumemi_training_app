@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, lines_longer_than_80_chars, unnecessary_null_checks, require_trailing_commas
+// ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, duplicate_ignore
 
 part of 'weather_screen_view_model.dart';
 
@@ -9,7 +9,7 @@ part of 'weather_screen_view_model.dart';
 // **************************************************************************
 
 String _$weatherScreenViewModelHash() =>
-    r'aa20981041f9b0e230bf02a5e09e7306f11a095e';
+    r'933e0348541e30cf81369e042b47715e0cfaaf1f';
 
 /// Copied from Dart SDK
 class _SystemHash {

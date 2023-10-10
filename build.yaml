@@ -4,13 +4,12 @@ targets:
       source_gen|combining_builder:
         options:
           ignore_for_file:
+            - type=lint
             - implicit_dynamic_parameter
             - implicit_dynamic_type
             - implicit_dynamic_method
             - strict_raw_type
-            - lines_longer_than_80_chars
-            - unnecessary_null_checks
-            - require_trailing_commas
+            - duplicate_ignore
       json_serializable:
         options:
           field_rename: snake
