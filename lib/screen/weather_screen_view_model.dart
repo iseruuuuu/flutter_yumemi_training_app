@@ -18,11 +18,11 @@ class WeatherScreenViewModel extends _$WeatherScreenViewModel {
   void reloadWeather(BuildContext context) {
     const weatherRequest = WeatherRequest();
     ref.read(weatherRepositoryProvider).getWeather(weatherRequest).map(
-      success: (list) {
+      success: (data) {
         state = WeatherScreenState.data(
-          weatherCondition: list.value.weatherCondition,
-          maxTemperature: list.value.maxTemperature.toString(),
-          minTemperature: list.value.minTemperature.toString(),
+          weatherCondition: data.value.weatherCondition,
+          maxTemperature: data.value.maxTemperature.toString(),
+          minTemperature: data.value.minTemperature.toString(),
         );
       },
       failure: (error) {
