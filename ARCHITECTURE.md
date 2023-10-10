@@ -15,7 +15,6 @@ end
 
 Screen(Screen)
 ViewModel(ViewModel)
-UseCase(UseCase)
 Repository(Repository)
 Api(Api)
 Screen --> ViewModel
