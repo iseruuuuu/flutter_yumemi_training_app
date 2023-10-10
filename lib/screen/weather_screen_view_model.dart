@@ -26,7 +26,7 @@ class WeatherScreenViewModel extends _$WeatherScreenViewModel {
         );
       },
       failure: (error) {
-        //失敗したとしてもエラーDialogを出すだけで、stateの状態を更新しない。
+        /// 失敗したとしてもエラーDialogを出すだけで、stateの状態を更新しない。
         _openErrorDialog(error.error, context);
       },
     );
