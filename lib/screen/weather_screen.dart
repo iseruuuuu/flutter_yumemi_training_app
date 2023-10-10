@@ -22,7 +22,6 @@ class WeatherScreen extends ConsumerWidget {
     );
     return Scaffold(
       body: _WeatherBody(
-        ref: ref,
         weatherCondition: weatherCondition,
         maxTemperature: maxTemperaure,
         minTemperature: minTemperacture,
@@ -31,21 +30,19 @@ class WeatherScreen extends ConsumerWidget {
   }
 }
 
-class _WeatherBody extends StatelessWidget {
+class _WeatherBody extends ConsumerWidget {
   const _WeatherBody({
-    required this.ref,
     required this.weatherCondition,
     required this.maxTemperature,
     required this.minTemperature,
   });
 
-  final WidgetRef ref;
   final WeatherCondition weatherCondition;
   final String maxTemperature;
   final String minTemperature;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final deviceWidthSize = MediaQuery.of(context).size.width / 2;
     return Column(
       children: [
