@@ -12,24 +12,20 @@ class WeatherScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(weatherScreenViewModelProvider());
+    final (
+      weatherCondition,
+      maxTemperaure,
+      minTemperacture,
+    ) = state.when(
+      initial: () => (WeatherCondition.none, '**', '**'),
+      data: (weather, max, min) => (weather, max, min),
+    );
     return Scaffold(
-      body: state.when(
-        data: (weather, max, min) {
-          return _WeatherBody(
-            ref: ref,
-            weatherCondition: weather,
-            maxTemperature: max,
-            minTemperature: min,
-          );
-        },
-        initial: () {
-          return _WeatherBody(
-            ref: ref,
-            weatherCondition: WeatherCondition.none,
-            maxTemperature: '**',
-            minTemperature: '**',
-          );
-        },
+      body: _WeatherBody(
+        ref: ref,
+        weatherCondition: weatherCondition,
+        maxTemperature: maxTemperaure,
+        minTemperature: minTemperacture,
       ),
     );
   }
