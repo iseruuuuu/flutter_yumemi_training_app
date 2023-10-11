@@ -6,12 +6,6 @@
 flowchart TB
 Riverpod
 
-subgraph Screen
-direction TB
-WeatherScreen((WeatherScreen))
-
-end
-
 Screen(Screen)
 ViewModel(ViewModel)
 Repository(Repository)
