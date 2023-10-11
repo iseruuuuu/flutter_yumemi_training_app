@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_training/constants/error_message.dart';
-import 'package:flutter_training/domain/datastore/weather_datastore.dart';
+import 'package:flutter_training/data_source/weather_data_source.dart';
 import 'package:flutter_training/model/result.dart';
 import 'package:flutter_training/model/weather_request.dart';
 import 'package:flutter_training/model/weather_result.dart';
@@ -12,18 +12,18 @@ part 'weather_repository.g.dart';
 
 @riverpod
 WeatherRepository weatherRepository(WeatherRepositoryRef ref) {
-  final weatherDatastore = ref.watch(weatherDatastoreProvider);
-  return WeatherRepository(weatherDatastore);
+  final weatherDataSource = ref.watch(weatherDataSourceProvider);
+  return WeatherRepository(weatherDataSource);
 }
 
 class WeatherRepository {
-  const WeatherRepository(this.weatherDatastore);
+  const WeatherRepository(this.weatherDataSource);
 
-  final WeatherDatastore weatherDatastore;
+  final WeatherDataSource weatherDataSource;
 
   Result<WeatherResult, String> getWeather(WeatherRequest weatherRequest) {
     try {
-      final weather = weatherDatastore.fetchWeather(weatherRequest);
+      final weather = weatherDataSource.fetchWeather(weatherRequest);
       final weatherDecode = jsonDecode(weather) as Map<String, dynamic>;
       final result = WeatherResult.fromJson(weatherDecode);
       return Result.success(result);
