@@ -40,7 +40,7 @@ DataSource --> Repository
 
 ### Repository
 
-- DataStoreからデータを取得
+- DataSourceからデータを取得
 - データをアプリで使いやすい形に変換
 - エラーハンドリングを行う
 - Result型に変換してViewModelに返す
