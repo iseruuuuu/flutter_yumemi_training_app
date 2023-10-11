@@ -33,7 +33,7 @@ DataSource --> Repository
 
 ### ViewModel
 
-- repositoryからデータを取得
+- Repositoryからデータを取得
 - 取得したデータの内容によって各種Providerを更新
 - Screenの表示に関わるStateの管理
 - Screenから受け取った操作（ボタンのタップ）Repositoryに対して天気のデータを取得or更新を伝える
