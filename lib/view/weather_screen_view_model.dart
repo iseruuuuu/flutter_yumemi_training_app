@@ -2,7 +2,7 @@ import 'package:flutter_training/model/result.dart';
 import 'package:flutter_training/model/weather_request.dart';
 import 'package:flutter_training/model/weather_result.dart';
 import 'package:flutter_training/repository/weather_repository.dart';
-import 'package:flutter_training/screen/weather_screen_state.dart';
+import 'package:flutter_training/view/weather_screen_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'weather_screen_view_model.g.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/mixin/process_after_layout_mixin.dart';
-import 'package:flutter_training/screen/weather_screen.dart';
+import 'package:flutter_training/view/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

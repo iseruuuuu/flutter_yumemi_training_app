@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/screen/home_screen.dart';
+import 'package:flutter_training/view/home_screen.dart';
 
 mixin ProcessAfterLayoutMixin on State<HomeScreen> {
   @override

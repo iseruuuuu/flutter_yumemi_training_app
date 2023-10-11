@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/temperature_item.dart';
 import 'package:flutter_training/constant/weather_condition.dart';
-import 'package:flutter_training/screen/weather_screen_view_model.dart';
+import 'package:flutter_training/view/weather_screen_view_model.dart';
 
 class WeatherScreen extends ConsumerWidget {
   const WeatherScreen({super.key});
