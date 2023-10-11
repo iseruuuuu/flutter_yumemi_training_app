@@ -1,4 +1,3 @@
-
 # ARCHITECTURE.md
 
 # 全体図
@@ -16,39 +15,41 @@ end
 Screen(Screen)
 ViewModel(ViewModel)
 Repository(Repository)
-Api(Api)
+DataSource(DataSource)
 Screen --> ViewModel
 ViewModel --> Screen
 Repository --> ViewModel
 ViewModel --> Repository
-Repository --> Api
-Api --> Repository
+Repository --> DataSource
+DataSource --> Repository
 ```
 
 # アーキテクチャ
 
 ### Screen
+
 - 取得した天気情報の表示を行っている。
 - エラーの際は、ダイアログを表示する。
 
 ### ViewModel
+
 - repositoryからデータを取得
 - 取得したデータの内容によって各種Providerを更新
 - Screenの表示に関わるStateの管理
-- Screenから受け取った操作（ボタンのタップ）Usecaseに対して天気のデータを取得or更新を伝える
+- Screenから受け取った操作（ボタンのタップ）Repositoryに対して天気のデータを取得or更新を伝える
 
 ### Repository
+
 - DataStoreからデータを取得
 - データをアプリで使いやすい形に変換
 - エラーハンドリングを行う
 - Result型に変換してViewModelに返す
 
-### DataStore
+### DataSource
+
 - APIからデータを取得
 
-
-##  Riverpod の Provider の依存関係図
-
+## Riverpod の Provider の依存関係図
 
 ```mermaid
 flowchart TB
@@ -70,13 +71,15 @@ flowchart TB
     Provider[[provider]];
   end
 
-  weatherScreenViewModelProvider[["weatherScreenViewModelProvider"]];
   weatherRepositoryProvider[["weatherRepositoryProvider"]];
-  weatherDatastoreProvider[["weatherDatastoreProvider"]];
+  weatherDataSourceProvider[["weatherDataSourceProvider"]];
+  weatherScreenViewModelProvider[["weatherScreenViewModelProvider"]];
   WeatherScreen((WeatherScreen));
+  _WeatherBody((_WeatherBody));
 
   weatherScreenViewModelProvider ==> WeatherScreen;
-  weatherDatastoreProvider ==> weatherRepositoryProvider;
+  weatherScreenViewModelProvider -.-> _WeatherBody;
+  weatherDataSourceProvider ==> weatherRepositoryProvider;
 
 ```
 
