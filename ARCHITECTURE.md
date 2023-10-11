@@ -20,7 +20,7 @@ dart pub global activate -sgit https://github.com/rrousselGit/riverpod.git --git
 dart pub global run riverpod_graph:riverpod_graph > graph.md
 ```
 
-完成図としては、[Riverpod の Provider の依存関係図](https://github.com/iseruuuuu/github_search_app/edit/main/README.md#riverpod-%E3%81%AE-provider-%E3%81%AE%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E5%9B%B3)となります。
+完成図としては、[Riverpod の Provider の依存関係図](https://github.com/iseruuuuu/flutter_yumemi_training_app/blob/feature/session_8/ARCHITECTURE.md#riverpod-%E3%81%AE-provider-%E3%81%AE%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E5%9B%B3)となります。
 
 ## 参考サイト
 - riverpod_graphのリポジトリ
