@@ -6,12 +6,12 @@
 flowchart TB
 Riverpod
 
-Screen(Screen)
+View(View)
 ViewModel(ViewModel)
 Repository(Repository)
 DataSource(DataSource)
-Screen --> ViewModel
-ViewModel --> Screen
+View --> ViewModel
+ViewModel --> View
 Repository --> ViewModel
 ViewModel --> Repository
 Repository --> DataSource
@@ -20,17 +20,21 @@ DataSource --> Repository
 
 # アーキテクチャ
 
-### Screen
+### View
 
-- 取得した天気情報の表示を行っている。
-- エラーの際は、ダイアログを表示する。
+#### WeatherScreen
+- 天気状態、最低・最高気温を管理している`weatherScreenViewModelProvider`をwatchして状態を更新するようにする。
 
+#### _WeatherBody
+- `weatherScreenViewModelProvider`をreadして、`reloadWeather`を呼ぶ。
+  - 成功した(success)場合は、天気の情報を更新する。
+  - 失敗した(failure)場合は、エラーのダイアログを表示する
 ### ViewModel
 
 - Repositoryからデータを取得
 - 取得したデータの内容によって各種Providerを更新
-- Screenの表示に関わるStateの管理
-- Screenから受け取った操作（ボタンのタップ）Repositoryに対して天気のデータを取得or更新を伝える
+- Viewの表示に関わるStateの管理
+- Viewから受け取った操作（ボタンのタップ）Repositoryに対して天気のデータを取得or更新を伝える
 
 ### Repository
 
