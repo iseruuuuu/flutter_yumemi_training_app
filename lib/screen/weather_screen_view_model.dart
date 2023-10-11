@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_training/domain/repository/weather_repository.dart';
+import 'package:flutter_training/model/result.dart';
 import 'package:flutter_training/model/weather_request.dart';
+import 'package:flutter_training/model/weather_result.dart';
+import 'package:flutter_training/repository/weather_repository.dart';
 import 'package:flutter_training/screen/weather_screen_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,38 +16,19 @@ class WeatherScreenViewModel extends _$WeatherScreenViewModel {
     return initState;
   }
 
-  void reloadWeather(BuildContext context) {
+  Result<WeatherResult, String> reloadWeather() {
     const weatherRequest = WeatherRequest();
-    ref.read(weatherRepositoryProvider).getWeather(weatherRequest).map(
-      success: (data) {
-        state = WeatherScreenState.data(
-          weatherCondition: data.value.weatherCondition,
-          maxTemperature: data.value.maxTemperature.toString(),
-          minTemperature: data.value.minTemperature.toString(),
-        );
-      },
-      failure: (error) {
-        // 失敗したとしてもエラーDialogを出すだけで、stateの状態を更新しない。
-        _openErrorDialog(error.error, context);
-      },
-    );
-  }
-
-  void _openErrorDialog(String error, BuildContext context) {
-    showDialog<void>(
-      context: context,
-      builder: (_) {
-        return AlertDialog(
-          title: const Text('Error'),
-          content: Text(error),
-          actions: [
-            TextButton(
-              onPressed: Navigator.of(context).pop,
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    final result =
+        ref.read(weatherRepositoryProvider).getWeather(weatherRequest)
+          ..whenOrNull(
+            success: (data) {
+              state = WeatherScreenState.data(
+                weatherCondition: data.weatherCondition,
+                maxTemperature: data.maxTemperature.toString(),
+                minTemperature: data.minTemperature.toString(),
+              );
+            },
+          );
+    return result;
   }
 }

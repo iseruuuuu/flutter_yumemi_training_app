@@ -90,9 +90,16 @@ class _WeatherBody extends ConsumerWidget {
                     ),
                     TemperatureButton(
                       text: 'Reload',
-                      onPressed: () => ref
-                          .read(weatherScreenViewModelProvider().notifier)
-                          .reloadWeather(context),
+                      onPressed: () {
+                        ref
+                            .read(weatherScreenViewModelProvider().notifier)
+                            .reloadWeather()
+                            .whenOrNull(
+                          failure: (error) {
+                            _openErrorDialog(error, context);
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -103,4 +110,22 @@ class _WeatherBody extends ConsumerWidget {
       ],
     );
   }
+}
+
+void _openErrorDialog(String error, BuildContext context) {
+  showDialog<void>(
+    context: context,
+    builder: (_) {
+      return AlertDialog(
+        title: const Text('Error'),
+        content: Text(error),
+        actions: [
+          TextButton(
+            onPressed: Navigator.of(context).pop,
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
 }
