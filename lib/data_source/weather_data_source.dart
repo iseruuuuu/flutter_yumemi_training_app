@@ -3,16 +3,16 @@ import 'package:flutter_training/model/weather_request.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
 
-part 'weather_datastore.g.dart';
+part 'weather_data_source.g.dart';
 
 @riverpod
-WeatherDatastore weatherDatastore(WeatherDatastoreRef ref) {
+WeatherDataSource weatherDataSource(WeatherDataSourceRef ref) {
   final yumemiWeather = YumemiWeather();
-  return WeatherDatastore(yumemiWeather);
+  return WeatherDataSource(yumemiWeather);
 }
 
-class WeatherDatastore {
-  const WeatherDatastore(this.yumemiWeather);
+class WeatherDataSource {
+  const WeatherDataSource(this.yumemiWeather);
 
   final YumemiWeather yumemiWeather;
 
