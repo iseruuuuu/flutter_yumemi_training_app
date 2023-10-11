@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/component/temperature_button.dart';
 import 'package:flutter_training/component/temperature_item.dart';
-import 'package:flutter_training/constants/weather_constants.dart';
+import 'package:flutter_training/constant/weather_condition.dart';
 import 'package:flutter_training/screen/weather_screen_view_model.dart';
 
 class WeatherScreen extends ConsumerWidget {

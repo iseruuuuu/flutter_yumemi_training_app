@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_training/constants/error_message.dart';
+import 'package:flutter_training/constant/error_message.dart';
 import 'package:flutter_training/data_source/weather_data_source.dart';
 import 'package:flutter_training/model/result.dart';
 import 'package:flutter_training/model/weather_request.dart';
