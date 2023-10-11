@@ -2,20 +2,27 @@
 
 # はじめに
 
-- `ARCHITECTURE.md`を生成するにあたって、[Riverpod](https://riverpod.dev/)のproviderやwidgetの関係性を可視化をできるようにするために、`riverpod_graph`を使用しました。
+- `ARCHITECTURE.md`
+  を生成するにあたって、[Riverpod](https://riverpod.dev/)のproviderやwidgetの関係性を可視化をできるようにするために、`riverpod_graph`を使用しました。
 - 以下の手順を踏むと自動ファイルが生成されます（今回の場合は、graph.mdに追記されます。）
 - このプロジェクトではgraph.md自体のファイルは必ずしも残しておく必要はないと判断し、Commitせずに削除をしました。
 
 ## 手順
+
 １、プロジェクトに移動
+
 ```
 cd yumemi_training_app 
 ```
+
 ２、インストール（インストールしていない場合）
+
 ```
 dart pub global activate -sgit https://github.com/rrousselGit/riverpod.git --git-path packages/riverpod_graph
 ```
+
 ３、生成する
+
 ```
 dart pub global run riverpod_graph:riverpod_graph > graph.md
 ```
@@ -23,10 +30,11 @@ dart pub global run riverpod_graph:riverpod_graph > graph.md
 完成図としては、[Riverpod の Provider の依存関係図](https://github.com/iseruuuuu/flutter_yumemi_training_app/blob/feature/session_8/ARCHITECTURE.md#riverpod-%E3%81%AE-provider-%E3%81%AE%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E5%9B%B3)となります。
 
 ## 参考サイト
+
 - riverpod_graphのリポジトリ
-  - https://github.com/rrousselGit/riverpod/tree/master/packages/riverpod_graph
+    - https://github.com/rrousselGit/riverpod/tree/master/packages/riverpod_graph
 - 日本語の記事
-  - https://zenn.dev/noboru_i/articles/ea02828f33deaa
+    - https://zenn.dev/noboru_i/articles/ea02828f33deaa
 
 # 全体図
 
@@ -51,12 +59,15 @@ DataSource --> Repository
 ### View
 
 #### WeatherScreen
-- 天気状態、最低・最高気温を管理している`weatherScreenViewModelProvider`をwatchして状態を更新するようにする。
+
+- 天気情報（天気状態、最低・最高気温）の取得
 
 #### _WeatherBody
-- `weatherScreenViewModelProvider`をreadして、`reloadWeather`を呼ぶ。
-  - 成功した(success)場合は、天気の情報を更新する。
-  - 失敗した(failure)場合は、エラーのダイアログを表示する
+
+- YumemiWeatherの天気情報を取得するボタンやTextの表示
+    - 成功した(success)場合は、天気の情報を更新する。
+    - 失敗した(failure)場合は、エラーのダイアログを表示する
+
 ### ViewModel
 
 - Repositoryからデータを取得
