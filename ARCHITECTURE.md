@@ -65,8 +65,8 @@ DataSource --> Repository
 #### _WeatherBody
 
 - YumemiWeatherの天気情報を取得するボタンやTextの表示
-    - 成功した(success)場合は、天気の情報を更新する。
-    - 失敗した(failure)場合は、エラーのダイアログを表示する
+  - 成功した(success)場合は、天気の情報を更新する。
+  - 失敗した(failure)場合は、エラーのダイアログを表示する
 
 ### ViewModel
 
