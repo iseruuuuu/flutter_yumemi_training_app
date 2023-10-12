@@ -58,15 +58,8 @@ DataSource --> Repository
 
 ### View
 
-#### WeatherScreen
-
-- 天気情報（天気状態、最低・最高気温）の取得
-
-#### _WeatherBody
-
-- YumemiWeatherの天気情報を取得するボタンやTextの表示
-    - 成功した(success)場合は、天気の情報を更新する。
-    - 失敗した(failure)場合は、エラーのダイアログを表示する
+- ViewModelから受け取ったデータを表示
+- ユーザーが行ったアクションをViewModelに伝達
 
 ### ViewModel
 
