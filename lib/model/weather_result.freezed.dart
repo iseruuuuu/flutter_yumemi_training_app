@@ -136,8 +136,7 @@ class __$$WeatherResultImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$WeatherResultImpl extends _WeatherResult with DiagnosticableTreeMixin {
   const _$WeatherResultImpl(
       {required this.weatherCondition,
