@@ -18,5 +18,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## アーキテクチャについての記載
 
-- https://github.com/iseruuuuu/flutter_yumemi_training_app/blob/feature/session_8/ARCHITECTURE.md
+- https://github.com/iseruuuuu/flutter_yumemi_training_app/blob/main/ARCHITECTURE.md
  
