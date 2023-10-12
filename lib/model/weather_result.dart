@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_training/constants/weather_constants.dart';
+import 'package:flutter_training/constant/weather_condition.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weather_result.freezed.dart';

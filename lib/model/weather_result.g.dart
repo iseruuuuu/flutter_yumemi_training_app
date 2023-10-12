@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type
+// ignore_for_file: type=lint, duplicate_ignore
 
 part of 'weather_result.dart';
 
@@ -8,8 +8,8 @@ part of 'weather_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WeatherResult _$$_WeatherResultFromJson(Map<String, dynamic> json) =>
-    _$_WeatherResult(
+_$WeatherResultImpl _$$WeatherResultImplFromJson(Map<String, dynamic> json) =>
+    _$WeatherResultImpl(
       weatherCondition:
           $enumDecode(_$WeatherConditionEnumMap, json['weather_condition']),
       maxTemperature: json['max_temperature'] as int,
@@ -17,7 +17,7 @@ _$_WeatherResult _$$_WeatherResultFromJson(Map<String, dynamic> json) =>
       date: DateTime.parse(json['date'] as String),
     );
 
-Map<String, dynamic> _$$_WeatherResultToJson(_$_WeatherResult instance) =>
+Map<String, dynamic> _$$WeatherResultImplToJson(_$WeatherResultImpl instance) =>
     <String, dynamic>{
       'weather_condition':
           _$WeatherConditionEnumMap[instance.weatherCondition]!,
@@ -27,6 +27,7 @@ Map<String, dynamic> _$$_WeatherResultToJson(_$_WeatherResult instance) =>
     };
 
 const _$WeatherConditionEnumMap = {
+  WeatherCondition.none: 'none',
   WeatherCondition.sunny: 'sunny',
   WeatherCondition.cloudy: 'cloudy',
   WeatherCondition.rainy: 'rainy',
