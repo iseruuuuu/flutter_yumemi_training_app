@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_training/constant/error_message.dart';
 import 'package:flutter_training/data_source/weather_data_source.dart';
 import 'package:flutter_training/model/result.dart';
@@ -23,16 +21,15 @@ class WeatherRepository {
 
   Result<WeatherResult, String> getWeather(WeatherRequest weatherRequest) {
     try {
-      final weather = weatherDataSource.fetchWeather(weatherRequest);
-      final weatherDecode = jsonDecode(weather) as Map<String, dynamic>;
+      final weatherDecode = weatherDataSource.fetchWeather(weatherRequest);
       final result = WeatherResult.fromJson(weatherDecode);
       return Result.success(result);
     } on YumemiWeatherError catch (error) {
       switch (error) {
         case YumemiWeatherError.unknown:
-          return const Result.failure(ErrorMessage.invalidParameter);
-        case YumemiWeatherError.invalidParameter:
           return const Result.failure(ErrorMessage.unknown);
+        case YumemiWeatherError.invalidParameter:
+          return const Result.failure(ErrorMessage.invalidParameter);
       }
     } on Exception catch (_) {
       return const Result.failure(ErrorMessage.other);
