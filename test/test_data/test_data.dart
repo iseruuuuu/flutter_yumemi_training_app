@@ -1,0 +1,8 @@
+import 'package:flutter_training/model/weather_request.dart';
+
+class TestData {
+  static const weatherRequest = WeatherRequest(
+    area: 'Kanagawa',
+    date: '2023-10-12T12:00:00+09:00',
+  );
+}
