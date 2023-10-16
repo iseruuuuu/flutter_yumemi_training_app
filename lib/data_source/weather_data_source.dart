@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_training/model/weather_request.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:yumemi_weather/yumemi_weather.dart';
@@ -17,9 +18,21 @@ class WeatherDataSource {
   final YumemiWeather yumemiWeather;
 
   Map<String, dynamic> fetchWeather(WeatherRequest weatherRequest) {
-    final encodeWeatherRequest = jsonEncode(weatherRequest);
+    final encodeWeatherRequest = encode(weatherRequest);
     final weather = yumemiWeather.fetchWeather(encodeWeatherRequest);
-    final decodeData = jsonDecode(weather) as Map<String, dynamic>;
+    final decodeData = decode(weather);
     return decodeData;
+  }
+
+  /// テストコード以外からの不必要な参照を防ぐ
+  @visibleForTesting
+  String encode(WeatherRequest weatherRequest) {
+    return jsonEncode(weatherRequest);
+  }
+
+  /// テストコード以外からの不必要な参照を防ぐ
+  @visibleForTesting
+  Map<String, dynamic> decode(String weather) {
+    return jsonDecode(weather) as Map<String, dynamic>;
   }
 }
