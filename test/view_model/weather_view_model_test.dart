@@ -35,7 +35,7 @@ void main() {
         container.read(weatherScreenViewModelProvider().notifier).build();
     expect(
       state,
-      isA<WeatherScreenStateInitial>(),
+      const WeatherScreenState.initial(),
     );
   });
 
