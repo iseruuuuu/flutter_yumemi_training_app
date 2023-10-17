@@ -24,13 +24,11 @@ class WeatherDataSource {
     return decodeData;
   }
 
-  /// テストコード以外からの不必要な参照を防ぐ
   @visibleForTesting
   String encode(WeatherRequest weatherRequest) {
     return jsonEncode(weatherRequest);
   }
 
-  /// テストコード以外からの不必要な参照を防ぐ
   @visibleForTesting
   Map<String, dynamic> decode(String weather) {
     return jsonDecode(weather) as Map<String, dynamic>;
