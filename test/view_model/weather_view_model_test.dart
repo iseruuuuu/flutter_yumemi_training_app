@@ -30,7 +30,7 @@ void main() {
   WeatherScreenViewModel create() =>
       container.read(weatherScreenViewModelProvider().notifier);
 
-  test('初期状態の確認', () {
+  test('Check initial status', () {
     final state =
         container.read(weatherScreenViewModelProvider().notifier).build();
     expect(
@@ -39,7 +39,7 @@ void main() {
     );
   });
 
-  test('success to get weather', () {
+  test('Success to get weather', () {
     final mockWeather = WeatherResult(
       weatherCondition: WeatherCondition.sunny,
       maxTemperature: 30,
@@ -58,6 +58,42 @@ void main() {
         maxTemperature: '30',
         minTemperature: '15',
       ),
+    );
+  });
+
+  test('Failure to check "initial -> error"', () {
+    when(mockWeatherRepository.getWeather(any)).thenReturn(
+      const Result.failure(''),
+    );
+    create().reloadWeather();
+    final state = create().state;
+    expect(
+      state,
+      const WeatherScreenState.initial(),
+    );
+  });
+
+  test('Failure to check "data -> error"', () {
+    final mockWeather = WeatherResult(
+      weatherCondition: WeatherCondition.sunny,
+      maxTemperature: 30,
+      minTemperature: 15,
+      date: DateTime(2023, 10, 12),
+    );
+    when(mockWeatherRepository.getWeather(any)).thenReturn(
+      Result.success(mockWeather),
+    );
+    create().reloadWeather();
+    final state = create().state;
+
+    when(mockWeatherRepository.getWeather(any)).thenReturn(
+      const Result.failure('error'),
+    );
+    create().reloadWeather();
+    final currentState = create().state;
+    expect(
+      currentState,
+      state,
     );
   });
 }
