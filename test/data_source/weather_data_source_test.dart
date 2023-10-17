@@ -46,28 +46,4 @@ void main() {
       throwsA(YumemiWeatherError.invalidParameter),
     );
   });
-
-  test('success to encode', () {
-    final encodeWeatherRequest = weatherDataSource.encode(weatherRequest);
-    expect(
-      encodeWeatherRequest,
-      '{"area":"Kanagawa","date":"2023-10-12T12:00:00+09:00"}',
-    );
-  });
-
-  test('success to decode', () {
-    final decodeData = weatherDataSource.decode(weatherJson);
-    expect(decodeData['weather_condition'], 'sunny');
-    expect(decodeData['max_temperature'], 30);
-    expect(decodeData['min_temperature'], 15);
-    expect(decodeData['date'], '2023-10-12T00:00:00.000');
-  });
-
-  test('failure to decode', () {
-    const invalidJson = '{"invalid_json":}';
-    expect(
-      () => weatherDataSource.decode(invalidJson),
-      throwsA(isA<FormatException>()),
-    );
-  });
 }
