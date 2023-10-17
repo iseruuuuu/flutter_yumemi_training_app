@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_training/constant/error_message.dart';
 import 'package:flutter_training/constant/weather_condition.dart';
@@ -18,19 +17,7 @@ import 'weather_repository_test.mocks.dart';
 void main() {
   final mockWeatherDataSource = MockWeatherDataSource();
   const weatherRequest = TestData.weatherRequest;
-  late ProviderContainer container;
-
-  setUp(() {
-    container = ProviderContainer(
-      overrides: [
-        weatherDataSourceProvider.overrideWithValue(mockWeatherDataSource),
-      ],
-    );
-  });
-
-  tearDown(() {
-    container.dispose();
-  });
+  final weatherRepository = WeatherRepository(mockWeatherDataSource);
 
   // 成功パターン
   // Result.successが返ってくる。
@@ -42,8 +29,7 @@ void main() {
       'date': '2023-10-12T00:00:00.000',
     };
     when(mockWeatherDataSource.fetchWeather(any)).thenReturn(mockWeather);
-    final result =
-        container.read(weatherRepositoryProvider).getWeather(weatherRequest);
+    final result = weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       Result<WeatherResult, String>.success(
@@ -62,8 +48,7 @@ void main() {
   test('Failure to get weather by YumemiWeatherError.unknown', () {
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.unknown);
-    final result =
-        container.read(weatherRepositoryProvider).getWeather(weatherRequest);
+    final result = weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       const Result<WeatherResult, String>.failure(ErrorMessage.unknown),
@@ -75,8 +60,7 @@ void main() {
   test('Failure to get weather by invalidParameter ', () {
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.invalidParameter);
-    final result =
-        container.read(weatherRepositoryProvider).getWeather(weatherRequest);
+    final result = weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       const Result<WeatherResult, String>.failure(
@@ -88,8 +72,7 @@ void main() {
   test('Failure to get weather by other error ', () {
     // 実行中に異常が起こった場合のテストのため、Exceptionを使用
     when(mockWeatherDataSource.fetchWeather(any)).thenThrow(Exception());
-    final result =
-        container.read(weatherRepositoryProvider).getWeather(weatherRequest);
+    final result = weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       const Result<WeatherResult, String>.failure(ErrorMessage.other),
