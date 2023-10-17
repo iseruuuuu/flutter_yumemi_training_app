@@ -19,8 +19,7 @@ void main() {
   final weatherRepository = WeatherRepository(mockWeatherDataSource);
   const weatherRequest = TestData.weatherRequest;
   const mockWeather = TestData.mockWeather;
-  // 成功パターン
-  // Result.successが返ってくる。
+
   test('Success to get weather', () {
     when(mockWeatherDataSource.fetchWeather(any)).thenReturn(mockWeather);
     final result = weatherRepository.getWeather(weatherRequest);
@@ -37,8 +36,6 @@ void main() {
     );
   });
 
-  // 失敗パターン（YumemiWeatherError.unknown）
-  // Result.failureが返ってくる。
   test('Failure to get weather by YumemiWeatherError.unknown', () {
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.unknown);
@@ -49,8 +46,6 @@ void main() {
     );
   });
 
-  // 失敗パターン（YumemiWeatherError.invalidParameter）
-  // Result.failureが返ってくる。
   test('Failure to get weather by invalidParameter ', () {
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.invalidParameter);
