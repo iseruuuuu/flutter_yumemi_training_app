@@ -51,14 +51,6 @@ void main() {
     );
     create().reloadWeather();
     final state = create().state;
-    // stateの値がWeatherScreenStateDataになっているかどうか
-    // 結果の検証
-    expect(
-      state,
-      isA<WeatherScreenStateData>(),
-    );
-    // stateの値がちゃんと入っているかどうか
-    // 状態の内容を検証
     expect(
       state,
       const WeatherScreenState.data(
