@@ -14,4 +14,11 @@ class TestData {
       "date": "2023-10-12T00:00:00.000"
      }
      ''';
+
+  static const mockWeather = {
+    'weather_condition': 'sunny',
+    'max_temperature': 30,
+    'min_temperature': 15,
+    'date': '2023-10-12T00:00:00.000',
+  };
 }

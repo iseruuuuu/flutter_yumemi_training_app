@@ -16,18 +16,12 @@ import 'weather_repository_test.mocks.dart';
 ])
 void main() {
   final mockWeatherDataSource = MockWeatherDataSource();
-  const weatherRequest = TestData.weatherRequest;
   final weatherRepository = WeatherRepository(mockWeatherDataSource);
-
+  const weatherRequest = TestData.weatherRequest;
+  const mockWeather = TestData.mockWeather;
   // 成功パターン
   // Result.successが返ってくる。
   test('Success to get weather', () {
-    final mockWeather = {
-      'weather_condition': 'sunny',
-      'max_temperature': 30,
-      'min_temperature': 15,
-      'date': '2023-10-12T00:00:00.000',
-    };
     when(mockWeatherDataSource.fetchWeather(any)).thenReturn(mockWeather);
     final result = weatherRepository.getWeather(weatherRequest);
     expect(
