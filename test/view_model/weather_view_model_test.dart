@@ -59,6 +59,5 @@ void main() {
         minTemperature: '15',
       ),
     );
-    container.dispose();
   });
 }
