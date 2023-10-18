@@ -18,7 +18,7 @@ void main() {
   final mockWeatherDataSource = MockWeatherDataSource();
   final weatherRepository = WeatherRepository(mockWeatherDataSource);
   const weatherRequest = TestData.weatherRequest;
-  const mockWeather = TestData.mockWeather;
+  const mockWeather = TestData.weatherMap;
 
   test('Success to get weather', () {
     when(mockWeatherDataSource.fetchWeather(any)).thenReturn(mockWeather);

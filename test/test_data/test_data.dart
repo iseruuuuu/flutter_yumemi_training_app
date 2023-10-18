@@ -39,7 +39,7 @@ class TestData {
      }
      ''';
 
-  static const mockWeather = {
+  static const weatherMap = {
     'weather_condition': 'sunny',
     'max_temperature': 30,
     'min_temperature': 15,
