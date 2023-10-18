@@ -4,20 +4,15 @@ import '../test_data/test_data.dart';
 
 void main() {
   const weatherRequestData = TestData.weatherRequestData;
-  const invalidWeatherRequestData = TestData.invalidWeatherRequestData;
 
-  test('success to do fromJson', () {
-    final result = WeatherRequest.fromJson(weatherRequestData);
-    expect(result.area, 'Kanagawa');
-    expect(result.date, '2023-10-12T12:00:00+09:00');
-  });
-
-  test('failure to do fromJson', () {
+  test('success to do toJson', () {
+    final result = const WeatherRequest(
+      area: 'Kanagawa',
+      date: '2023-10-12T12:00:00+09:00',
+    ).toJson();
     expect(
-      () => WeatherRequest.fromJson(invalidWeatherRequestData),
-      throwsA(
-        isA<TypeError>(),
-      ),
+      result,
+      weatherRequestData,
     );
   });
 }
