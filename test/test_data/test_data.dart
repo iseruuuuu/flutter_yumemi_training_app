@@ -6,7 +6,12 @@ class TestData {
     date: '2023-10-12T12:00:00+09:00',
   );
 
-  static const weatherRequestData = {
+  static const expectedWeatherRequest = WeatherRequest(
+    area: 'Kanagawa',
+    date: '2023-10-12T12:00:00+09:00',
+  );
+
+  static const matcherWeatherRequest = {
     'area': 'Kanagawa',
     'date': '2023-10-12T12:00:00+09:00',
   };
