@@ -1,53 +1,77 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_training/constant/weather_condition.dart';
 import 'package:flutter_training/model/weather_result.dart';
-import '../test_data/test_data.dart';
 
 void main() {
-  test('Successfully executed fromJson', () {
-    const expectedWeatherResultData = TestData.expectedWeatherResultData;
-    final result = WeatherResult.fromJson(expectedWeatherResultData);
-    expect(result.weatherCondition, WeatherCondition.sunny);
+  test('fromJsonが正常に実行できた', () {
+    const weatherResultData = {
+      'weather_condition': 'sunny',
+      'max_temperature': 30,
+      'min_temperature': 15,
+      'date': '2023-10-12T00:00:00.000',
+    };
+    final result = WeatherResult.fromJson(weatherResultData);
+    expect(result.weatherCondition.name, 'sunny');
     expect(result.maxTemperature, 30);
     expect(result.minTemperature, 15);
     expect(result.date, DateTime(2023, 10, 12));
   });
 
-  test('Failed to execute fromJson due to an incorrect JSON key', () {
-    const missWeatherCondition = TestData.missWeatherConditionWeatherResult;
-    const missMaxTemperature = TestData.missMaxTemperatureWeatherResult;
-    const missMinTemperature = TestData.missMinTemperatureWeatherResult;
-    const missDateWeather = TestData.missDateWeatherResult;
+  test('valueの型や値が間違っており、fromJsonができない', () {
+    const invalidWeatherCondition = {
+      'weather_condition': 'sanny',
+      'max_temperature': 30,
+      'min_temperature': 15,
+      'date': '2023-10-12T00:00:00.000',
+    };
     expect(
-      () => WeatherResult.fromJson(missWeatherCondition),
+      () => WeatherResult.fromJson(invalidWeatherCondition),
       throwsA(isA<ArgumentError>()),
     );
+
+    const invalidMaxTemperature = {
+      'weather_condition': 'sunny',
+      'max_temperature': '30',
+      'min_temperature': 15,
+      'date': '2023-10-12T00:00:00.000',
+    };
     expect(
-      () => WeatherResult.fromJson(missMaxTemperature),
+      () => WeatherResult.fromJson(invalidMaxTemperature),
       throwsA(isA<TypeError>()),
     );
+
+    const invalidMinTemperature = {
+      'weather_condition': 'sunny',
+      'max_temperature': 30,
+      'min_temperature': '15',
+      'date': '2023-10-12T00:00:00.000',
+    };
     expect(
-      () => WeatherResult.fromJson(missMinTemperature),
+      () => WeatherResult.fromJson(invalidMinTemperature),
       throwsA(isA<TypeError>()),
-    );
-    expect(
-      () => WeatherResult.fromJson(missDateWeather),
-      throwsA(isA<FormatException>()),
     );
   });
 
-  test('Failed to execute fromJson because of an unintended snake_case', () {
-    const snakeCaseResult = TestData.snakeCaseResult;
+  test('keyがスネークケースになっておらず、fromJsonができない', () {
+    const lowerCamelWeatherResult = {
+      'weatherCondition': 'sunny',
+      'maxTemperature': 30,
+      'minTemperature': 15,
+      'date': '2023-10-12T00:00:00.000',
+    };
     expect(
-      () => WeatherResult.fromJson(snakeCaseResult),
+      () => WeatherResult.fromJson(lowerCamelWeatherResult),
       throwsA(isA<ArgumentError>()),
     );
   });
 
-  test('Failed to execute fromJson due to lack of JSON data."', () {
-    const lackWeatherResultData = TestData.lackWeatherResultData;
+  test('Json型のデータに不足があり、fromJsonができない', () {
+    const lackWeatherCondition = {
+      'max_temperature': 30,
+      'min_temperature': 15,
+      'date': '2023-10-12T00:00:00.000',
+    };
     expect(
-      () => WeatherResult.fromJson(lackWeatherResultData),
+      () => WeatherResult.fromJson(lackWeatherCondition),
       throwsA(isA<ArgumentError>()),
     );
   });
