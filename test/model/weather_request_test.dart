@@ -1,12 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
-import '../test_data/test_data.dart';
+import 'package:flutter_training/model/weather_request.dart';
 
 void main() {
-  const expectedWeatherRequest = TestData.expectedWeatherRequest;
-  const matcherWeatherRequest = TestData.matcherWeatherRequest;
+  const weatherRequestData = WeatherRequest(
+    area: 'Kanagawa',
+    date: '2023-10-12T12:00:00+09:00',
+  );
 
   test('success to do toJson', () {
-    final result = expectedWeatherRequest.toJson();
-    expect(result, matcherWeatherRequest);
+    final result = weatherRequestData.toJson();
+    expect(
+      result,
+      {
+        'area': 'Kanagawa',
+        'date': '2023-10-12T12:00:00+09:00',
+      },
+    );
   });
 }
