@@ -16,9 +16,10 @@ class WeatherDataSource {
 
   final YumemiWeather yumemiWeather;
 
-  String fetchWeather(WeatherRequest weatherRequest) {
+  Map<String, dynamic> fetchWeather(WeatherRequest weatherRequest) {
     final encodeWeatherRequest = jsonEncode(weatherRequest);
     final weather = yumemiWeather.fetchWeather(encodeWeatherRequest);
-    return weather;
+    final decodeData = jsonDecode(weather) as Map<String, dynamic>;
+    return decodeData;
   }
 }
