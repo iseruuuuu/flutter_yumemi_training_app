@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_training/constant/error_message.dart';
 import 'package:flutter_training/constant/weather_condition.dart';
 import 'package:flutter_training/model/result.dart';
 import 'package:flutter_training/model/weather_result.dart';
@@ -48,6 +49,16 @@ MockWeatherRepository createMockWeatherRepository({
   );
   when(mockWeatherRepository.getWeather(any)).thenAnswer(
     (_) => Result.success(weatherResult),
+  );
+  return mockWeatherRepository;
+}
+
+MockWeatherRepository createFailureMockWeatherRepository({
+  required String errorMessage,
+}) {
+  final mockWeatherRepository = MockWeatherRepository();
+  when(mockWeatherRepository.getWeather(any)).thenAnswer(
+    (_) => Result.failure(errorMessage),
   );
   return mockWeatherRepository;
 }
@@ -161,5 +172,24 @@ void main() {
     await tester.pump();
     expect(find.text('$minTemperature ℃'), findsOneWidget);
   });
-  testWidgets('特定の条件で、天気予報画面にダイアログが表示され、特定のメッセージが表示されること', (tester) async {});
+  testWidgets('特定の条件で、天気予報画面にダイアログが表示され、特定のメッセージが表示されること', (tester) async {
+    final mockWeatherViewModel = createFailureMockWeatherRepository(
+      errorMessage: ErrorMessage.unknown,
+    );
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          weatherRepositoryProvider.overrideWithValue(
+            mockWeatherViewModel,
+          ),
+        ],
+        child: const _WeatherTestScreen(),
+      ),
+    );
+    await tester.tap(find.text('Reload'));
+    await tester.pump();
+    expect(find.byType(AlertDialog), findsOneWidget);
+    expect(find.text('予期せぬ不具合が発生しました。'), findsOneWidget);
+    expect(find.text(ErrorMessage.unknown), findsOneWidget);
+  });
 }
