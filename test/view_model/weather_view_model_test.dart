@@ -31,10 +31,9 @@ void main() {
       container.read(weatherScreenViewModelProvider().notifier);
 
   test('Check initial status', () {
-    final state =
-        container.read(weatherScreenViewModelProvider().notifier).build();
+    final viewModel = create();
     expect(
-      state,
+      viewModel.state,
       const WeatherScreenState.initial(),
     );
   });
