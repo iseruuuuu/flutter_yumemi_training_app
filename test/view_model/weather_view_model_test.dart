@@ -49,10 +49,9 @@ void main() {
     when(mockWeatherRepository.getWeather(any)).thenReturn(
       Result.success(mockWeather),
     );
-    create().reloadWeather();
-    final state = create().state;
+    final viewModel = create()..reloadWeather();
     expect(
-      state,
+      viewModel.state,
       const WeatherScreenState.data(
         weatherCondition: WeatherCondition.sunny,
         maxTemperature: '30',
