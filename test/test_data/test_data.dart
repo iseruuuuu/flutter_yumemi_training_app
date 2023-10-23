@@ -6,11 +6,6 @@ class TestData {
     date: '2023-10-12T12:00:00+09:00',
   );
 
-  static const invalidWeatherRequestData = {
-    'area': 123,
-    'date': '2023-10-12T12:00:00+09:00',
-  };
-
   static const weatherJson = '''
     {
       "weather_condition": "sunny",
