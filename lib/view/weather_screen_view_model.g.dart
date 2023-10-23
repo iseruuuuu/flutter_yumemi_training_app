@@ -9,7 +9,7 @@ part of 'weather_screen_view_model.dart';
 // **************************************************************************
 
 String _$weatherScreenViewModelHash() =>
-    r'840dbcced0af3187de6a348225c190e08f96944c';
+    r'63ea4dd4200547f68be91e5dd7ac451a2ba7c2c3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -68,12 +68,18 @@ class WeatherScreenViewModelFamily extends Family<WeatherScreenState> {
     );
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
+  static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
+    weatherRepositoryProvider
+  ];
 
   @override
   Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+  static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
+      <ProviderOrFamily>{
+    weatherRepositoryProvider,
+    ...?weatherRepositoryProvider.allTransitiveDependencies
+  };
 
   @override
   Iterable<ProviderOrFamily>? get allTransitiveDependencies =>

@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'weather_screen_view_model.g.dart';
 
-@riverpod
+@Riverpod(dependencies: [weatherRepository])
 class WeatherScreenViewModel extends _$WeatherScreenViewModel {
   @override
   WeatherScreenState build({
