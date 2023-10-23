@@ -64,10 +64,9 @@ void main() {
     when(mockWeatherRepository.getWeather(any)).thenReturn(
       const Result.failure(''),
     );
-    create().reloadWeather();
-    final state = create().state;
+    final viewModel = create()..reloadWeather();
     expect(
-      state,
+      viewModel.state,
       const WeatherScreenState.initial(),
     );
   });
