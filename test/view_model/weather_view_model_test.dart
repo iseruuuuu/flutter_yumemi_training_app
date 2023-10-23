@@ -81,17 +81,18 @@ void main() {
     when(mockWeatherRepository.getWeather(any)).thenReturn(
       Result.success(mockWeather),
     );
-    create().reloadWeather();
-    final state = create().state;
+    final viewModel = create()..reloadWeather();
+    final beforeState = viewModel.state;
 
     when(mockWeatherRepository.getWeather(any)).thenReturn(
       const Result.failure('error'),
     );
-    create().reloadWeather();
-    final currentState = create().state;
+
+    viewModel.reloadWeather();
+    final currentState = viewModel.state;
     expect(
       currentState,
-      state,
+      beforeState,
     );
   });
 }
