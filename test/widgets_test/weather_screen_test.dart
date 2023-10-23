@@ -22,10 +22,8 @@ class _WeatherTestScreen extends ConsumerWidget {
   }
 }
 
-/// 特定のSVG画像を探すためのFinder
 Finder _findSvgImage(String image) {
   final finder = find.byWidgetPredicate((Widget widget) {
-    //widgetがSvgPictureかつpictureProviderがExactAssetPictureかどうか
     if (widget is SvgPicture && widget.pictureProvider is ExactAssetPicture) {
       final exactAssetPictureProvider =
           widget.pictureProvider as ExactAssetPicture;
@@ -55,7 +53,6 @@ MockWeatherRepository createMockWeatherRepository({
 }
 
 void main() {
-  // デバイスの設定
   setUp(setDisplaySize);
   tearDown(resetDisplaySize);
 
