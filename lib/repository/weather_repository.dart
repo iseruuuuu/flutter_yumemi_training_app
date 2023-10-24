@@ -8,7 +8,7 @@ import 'package:yumemi_weather/yumemi_weather.dart';
 
 part 'weather_repository.g.dart';
 
-@Riverpod(dependencies: [])
+@Riverpod(dependencies: [weatherDataSource])
 WeatherRepository weatherRepository(WeatherRepositoryRef ref) {
   final weatherDataSource = ref.watch(weatherDataSourceProvider);
   return WeatherRepository(weatherDataSource);

@@ -8,7 +8,7 @@ part of 'weather_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$weatherRepositoryHash() => r'03bca38f8edd50c2d623738eb638cbd44f322397';
+String _$weatherRepositoryHash() => r'c5ad9673f5925a3b0f9f5cea69ab23d2499e60d9';
 
 /// See also [weatherRepository].
 @ProviderFor(weatherRepository)
@@ -19,8 +19,11 @@ final weatherRepositoryProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$weatherRepositoryHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>{},
+  dependencies: <ProviderOrFamily>[weatherDataSourceProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    weatherDataSourceProvider,
+    ...?weatherDataSourceProvider.allTransitiveDependencies
+  },
 );
 
 typedef WeatherRepositoryRef = AutoDisposeProviderRef<WeatherRepository>;
