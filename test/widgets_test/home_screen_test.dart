@@ -16,8 +16,7 @@ void main() {
       await tester.pumpWidget(const ProviderScope(child: MyApp()));
       expect(find.byType(HomeScreen), findsOneWidget);
       // 500m秒後の遅延実行する
-      await tester.pump(const Duration(milliseconds: 500));
-      await tester.pumpAndSettle();
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
       expect(find.byType(HomeScreen), findsNothing);
       expect(find.byType(WeatherScreen), findsOneWidget);
     },
