@@ -10,7 +10,7 @@ import 'package:flutter_training/repository/weather_repository.dart';
 import 'package:flutter_training/view/weather_screen.dart';
 import 'package:mockito/mockito.dart';
 import '../view_model/weather_view_model_test.mocks.dart';
-import 'utils/utils.dart';
+import 'utils/device_size.dart';
 
 class _WeatherTestScreen extends ConsumerWidget {
   const _WeatherTestScreen();

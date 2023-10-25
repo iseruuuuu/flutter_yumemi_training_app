@@ -3,8 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_training/main.dart';
 import 'package:flutter_training/view/home_screen.dart';
 import 'package:flutter_training/view/weather_screen.dart';
-
-import 'utils/utils.dart';
+import 'utils/device_size.dart';
 
 void main() {
   setUp(setDisplaySize);
