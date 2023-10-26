@@ -19,9 +19,12 @@ class WeatherRepository {
 
   final WeatherDataSource weatherDataSource;
 
-  Result<WeatherResult, String> getWeather(WeatherRequest weatherRequest) {
+  Future<Result<WeatherResult, String>> getWeather(
+    WeatherRequest weatherRequest,
+  ) async {
     try {
-      final weatherDecode = weatherDataSource.fetchWeather(weatherRequest);
+      final weatherDecode =
+          await weatherDataSource.fetchWeather(weatherRequest);
       final result = WeatherResult.fromJson(weatherDecode);
       return Result.success(result);
     } on YumemiWeatherError catch (error) {
