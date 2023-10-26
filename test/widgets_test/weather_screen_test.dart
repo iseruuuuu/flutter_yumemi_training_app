@@ -54,9 +54,11 @@ void main() {
   });
 
   testWidgets('初期状態で全てのWidgetが問題なく表示されていること', (tester) async {
+    // Arrange
     await tester.pumpWidget(
       const ProviderScope(child: MaterialApp(home: WeatherScreen())),
     );
+    // Assert
     expect(find.byType(WeatherScreen), findsOneWidget);
     expect(find.byType(Placeholder), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
@@ -65,6 +67,7 @@ void main() {
   });
 
   testWidgets('特定の条件で、晴れの画像が表示されること', (tester) async {
+    // Arrange
     const weatherCondition = WeatherCondition.sunny;
     final weatherResult = _defaultWeatherResult.copyWith(
       weatherCondition: weatherCondition,
@@ -73,12 +76,15 @@ void main() {
       (_) => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
+    // Act
     await tester.tap(find.text('Reload'));
     await tester.pumpAndSettle();
+    // Assert
     expect(_findSvgImage(weatherCondition.name), findsOneWidget);
   });
 
   testWidgets('特定の条件で、天気予報画面に曇りの画像が表示されること', (tester) async {
+    // Arrange
     const weatherCondition = WeatherCondition.cloudy;
     final weatherResult = _defaultWeatherResult.copyWith(
       weatherCondition: weatherCondition,
@@ -87,12 +93,15 @@ void main() {
       (_) => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
+    // Act
     await tester.tap(find.text('Reload'));
     await tester.pump();
+    // Assert
     expect(_findSvgImage(weatherCondition.name), findsOneWidget);
   });
 
   testWidgets('特定の条件で、天気予報画面に雨の画像が表示されること', (tester) async {
+    // Arrange
     const weatherCondition = WeatherCondition.rainy;
     final weatherResult = _defaultWeatherResult.copyWith(
       weatherCondition: weatherCondition,
@@ -101,12 +110,15 @@ void main() {
       (_) => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
+    // Act
     await tester.tap(find.text('Reload'));
     await tester.pump();
+    // Assert
     expect(_findSvgImage(weatherCondition.name), findsOneWidget);
   });
 
   testWidgets('特定の条件で、天気予報画面に最高気温が表示されること', (tester) async {
+    // Arrange
     const maxTemperature = 30;
     final weatherResult = _defaultWeatherResult.copyWith(
       maxTemperature: maxTemperature,
@@ -115,13 +127,15 @@ void main() {
       (_) => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
-
+    // Act
     await tester.tap(find.text('Reload'));
     await tester.pump();
+    // Assert
     expect(find.text('$maxTemperature ℃'), findsOneWidget);
   });
 
   testWidgets('特定の条件で、天気予報画面に最低気温が表示されること', (tester) async {
+    // Arrange
     const minTemperature = 15;
     final weatherResult = _defaultWeatherResult.copyWith(
       minTemperature: minTemperature,
@@ -130,18 +144,23 @@ void main() {
       (_) => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
+    // Act
     await tester.tap(find.text('Reload'));
     await tester.pump();
+    // Assert
     expect(find.text('$minTemperature ℃'), findsOneWidget);
   });
 
   testWidgets('特定の条件で、天気予報画面にダイアログが表示され、特定のメッセージが表示されること', (tester) async {
+    // Arrange
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
       (_) => const Result.failure(ErrorMessage.unknown),
     );
     await tester.pumpWidget(providerScope);
+    // Act
     await tester.tap(find.text('Reload'));
     await tester.pump();
+    // Assert
     expect(find.byType(AlertDialog), findsOneWidget);
     expect(find.text(ErrorMessage.unknown), findsOneWidget);
   });
