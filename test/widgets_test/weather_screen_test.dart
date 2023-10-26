@@ -184,7 +184,6 @@ void main() {
     await tester.tap(find.text('Reload'));
     await tester.pump();
     expect(find.byType(AlertDialog), findsOneWidget);
-    expect(find.text('予期せぬ不具合が発生しました。'), findsOneWidget);
     expect(find.text(ErrorMessage.unknown), findsOneWidget);
   });
 }
