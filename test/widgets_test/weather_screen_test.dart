@@ -55,9 +55,6 @@ void main() {
 
   testWidgets('初期状態で全てのWidgetが問題なく表示されていること', (tester) async {
     // Arrange
-    // await tester.pumpWidget(
-    //   const ProviderScope(child: MaterialApp(home: WeatherScreen())),
-    // );
     await tester.pumpWidget(providerScope);
     // Assert
     expect(find.byType(WeatherScreen), findsOneWidget);
