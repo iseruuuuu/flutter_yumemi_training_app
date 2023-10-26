@@ -67,13 +67,8 @@ void main() {
   setUp(setDisplaySize);
   tearDown(resetDisplaySize);
 
-  late ProviderScope providerScope;
-
   testWidgets('初期状態で全てのWidgetが問題なく表示されていること', (tester) async {
-    providerScope = const ProviderScope(
-      child: _WeatherTestScreen(),
-    );
-    await tester.pumpWidget(providerScope);
+    await tester.pumpWidget(const ProviderScope(child: _WeatherTestScreen()));
     expect(find.byType(WeatherScreen), findsOneWidget);
     expect(find.byType(Placeholder), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
