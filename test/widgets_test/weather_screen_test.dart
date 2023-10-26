@@ -96,13 +96,13 @@ void main() {
 
   testWidgets('特定の条件で、天気予報画面に曇りの画像が表示されること', (tester) async {
     const weather = WeatherCondition.cloudy;
-    final mockWeatherViewModel =
+    final mockWeatherRepository =
         createMockWeatherRepository(weatherCondition: weather);
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           weatherRepositoryProvider.overrideWithValue(
-            mockWeatherViewModel,
+            mockWeatherRepository,
           ),
         ],
         child: const _WeatherTestScreen(),
@@ -114,13 +114,13 @@ void main() {
   });
   testWidgets('特定の条件で、天気予報画面に雨の画像が表示されること', (tester) async {
     const weather = WeatherCondition.rainy;
-    final mockWeatherViewModel =
+    final mockWeatherRepository =
         createMockWeatherRepository(weatherCondition: weather);
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           weatherRepositoryProvider.overrideWithValue(
-            mockWeatherViewModel,
+            mockWeatherRepository,
           ),
         ],
         child: const _WeatherTestScreen(),
@@ -133,13 +133,13 @@ void main() {
   });
   testWidgets('特定の条件で、天気予報画面に最高気温が表示されること', (tester) async {
     const maxTemperature = 30;
-    final mockWeatherViewModel =
+    final mockWeatherRepository =
         createMockWeatherRepository(maxTemperature: maxTemperature);
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           weatherRepositoryProvider.overrideWithValue(
-            mockWeatherViewModel,
+            mockWeatherRepository,
           ),
         ],
         child: const _WeatherTestScreen(),
@@ -151,13 +151,13 @@ void main() {
   });
   testWidgets('特定の条件で、天気予報画面に最低気温が表示されること', (tester) async {
     const minTemperature = 15;
-    final mockWeatherViewModel =
+    final mockWeatherRepository =
         createMockWeatherRepository(minTemperature: minTemperature);
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           weatherRepositoryProvider.overrideWithValue(
-            mockWeatherViewModel,
+            mockWeatherRepository,
           ),
         ],
         child: const _WeatherTestScreen(),
@@ -168,14 +168,14 @@ void main() {
     expect(find.text('$minTemperature ℃'), findsOneWidget);
   });
   testWidgets('特定の条件で、天気予報画面にダイアログが表示され、特定のメッセージが表示されること', (tester) async {
-    final mockWeatherViewModel = createFailureMockWeatherRepository(
+    final mockWeatherRepository = createFailureMockWeatherRepository(
       errorMessage: ErrorMessage.unknown,
     );
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           weatherRepositoryProvider.overrideWithValue(
-            mockWeatherViewModel,
+            mockWeatherRepository,
           ),
         ],
         child: const _WeatherTestScreen(),
