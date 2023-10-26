@@ -12,17 +12,6 @@ import 'package:mockito/mockito.dart';
 import '../view_model/weather_view_model_test.mocks.dart';
 import 'utils/device_size.dart';
 
-class _WeatherTestScreen extends ConsumerWidget {
-  const _WeatherTestScreen();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const MaterialApp(
-      home: WeatherScreen(),
-    );
-  }
-}
-
 Finder _findSvgImage(String image) {
   final finder = find.byWidgetPredicate((Widget widget) {
     if (widget is SvgPicture && widget.pictureProvider is ExactAssetPicture) {
@@ -35,40 +24,39 @@ Finder _findSvgImage(String image) {
   return finder;
 }
 
-MockWeatherRepository createMockWeatherRepository({
-  WeatherCondition weatherCondition = WeatherCondition.sunny,
-  int maxTemperature = 0,
-  int minTemperature = 0,
-}) {
-  final mockWeatherRepository = MockWeatherRepository();
-  final weatherResult = WeatherResult(
-    weatherCondition: weatherCondition,
-    maxTemperature: maxTemperature,
-    minTemperature: minTemperature,
-    date: DateTime.now(),
-  );
-  when(mockWeatherRepository.getWeather(any)).thenAnswer(
-    (_) => Result.success(weatherResult),
-  );
-  return mockWeatherRepository;
-}
-
-MockWeatherRepository createFailureMockWeatherRepository({
-  required String errorMessage,
-}) {
-  final mockWeatherRepository = MockWeatherRepository();
-  when(mockWeatherRepository.getWeather(any)).thenAnswer(
-    (_) => Result.failure(errorMessage),
-  );
-  return mockWeatherRepository;
-}
+final _defaultWeatherResult = WeatherResult(
+  weatherCondition: WeatherCondition.sunny,
+  maxTemperature: 0,
+  minTemperature: 0,
+  date: DateTime.now(),
+);
 
 void main() {
   setUp(setDisplaySize);
   tearDown(resetDisplaySize);
 
+  final mockWeatherRepository = MockWeatherRepository();
+  tearDown(() {
+    reset(mockWeatherRepository);
+  });
+
+  late ProviderScope providerScope;
+
+  setUp(() {
+    providerScope = ProviderScope(
+      overrides: [
+        weatherRepositoryProvider.overrideWithValue(mockWeatherRepository),
+      ],
+      child: const MaterialApp(
+        home: WeatherScreen(),
+      ),
+    );
+  });
+
   testWidgets('初期状態で全てのWidgetが問題なく表示されていること', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: _WeatherTestScreen()));
+    await tester.pumpWidget(
+      const ProviderScope(child: MaterialApp(home: WeatherScreen())),
+    );
     expect(find.byType(WeatherScreen), findsOneWidget);
     expect(find.byType(Placeholder), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
@@ -77,110 +65,81 @@ void main() {
   });
 
   testWidgets('特定の条件で、晴れの画像が表示されること', (tester) async {
-    const weather = WeatherCondition.sunny;
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          weatherRepositoryProvider.overrideWithValue(
-            createMockWeatherRepository(),
-          ),
-        ],
-        child: const _WeatherTestScreen(),
-      ),
+    const weatherCondition = WeatherCondition.sunny;
+    final weatherResult = _defaultWeatherResult.copyWith(
+      weatherCondition: weatherCondition,
     );
-
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) => Result.success(weatherResult),
+    );
+    await tester.pumpWidget(providerScope);
     await tester.tap(find.text('Reload'));
     await tester.pumpAndSettle();
-    expect(_findSvgImage(weather.name), findsOneWidget);
+    expect(_findSvgImage(weatherCondition.name), findsOneWidget);
   });
 
   testWidgets('特定の条件で、天気予報画面に曇りの画像が表示されること', (tester) async {
-    const weather = WeatherCondition.cloudy;
-    final mockWeatherRepository =
-        createMockWeatherRepository(weatherCondition: weather);
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          weatherRepositoryProvider.overrideWithValue(
-            mockWeatherRepository,
-          ),
-        ],
-        child: const _WeatherTestScreen(),
-      ),
+    const weatherCondition = WeatherCondition.cloudy;
+    final weatherResult = _defaultWeatherResult.copyWith(
+      weatherCondition: weatherCondition,
     );
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) => Result.success(weatherResult),
+    );
+    await tester.pumpWidget(providerScope);
     await tester.tap(find.text('Reload'));
     await tester.pump();
-    expect(_findSvgImage(weather.name), findsOneWidget);
+    expect(_findSvgImage(weatherCondition.name), findsOneWidget);
   });
-  testWidgets('特定の条件で、天気予報画面に雨の画像が表示されること', (tester) async {
-    const weather = WeatherCondition.rainy;
-    final mockWeatherRepository =
-        createMockWeatherRepository(weatherCondition: weather);
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          weatherRepositoryProvider.overrideWithValue(
-            mockWeatherRepository,
-          ),
-        ],
-        child: const _WeatherTestScreen(),
-      ),
-    );
 
+  testWidgets('特定の条件で、天気予報画面に雨の画像が表示されること', (tester) async {
+    const weatherCondition = WeatherCondition.rainy;
+    final weatherResult = _defaultWeatherResult.copyWith(
+      weatherCondition: weatherCondition,
+    );
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) => Result.success(weatherResult),
+    );
+    await tester.pumpWidget(providerScope);
     await tester.tap(find.text('Reload'));
     await tester.pump();
-    expect(_findSvgImage(weather.name), findsOneWidget);
+    expect(_findSvgImage(weatherCondition.name), findsOneWidget);
   });
+
   testWidgets('特定の条件で、天気予報画面に最高気温が表示されること', (tester) async {
     const maxTemperature = 30;
-    final mockWeatherRepository =
-        createMockWeatherRepository(maxTemperature: maxTemperature);
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          weatherRepositoryProvider.overrideWithValue(
-            mockWeatherRepository,
-          ),
-        ],
-        child: const _WeatherTestScreen(),
-      ),
+    final weatherResult = _defaultWeatherResult.copyWith(
+      maxTemperature: maxTemperature,
     );
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) => Result.success(weatherResult),
+    );
+    await tester.pumpWidget(providerScope);
+
     await tester.tap(find.text('Reload'));
     await tester.pump();
     expect(find.text('$maxTemperature ℃'), findsOneWidget);
   });
+
   testWidgets('特定の条件で、天気予報画面に最低気温が表示されること', (tester) async {
     const minTemperature = 15;
-    final mockWeatherRepository =
-        createMockWeatherRepository(minTemperature: minTemperature);
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          weatherRepositoryProvider.overrideWithValue(
-            mockWeatherRepository,
-          ),
-        ],
-        child: const _WeatherTestScreen(),
-      ),
+    final weatherResult = _defaultWeatherResult.copyWith(
+      minTemperature: minTemperature,
     );
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) => Result.success(weatherResult),
+    );
+    await tester.pumpWidget(providerScope);
     await tester.tap(find.text('Reload'));
     await tester.pump();
     expect(find.text('$minTemperature ℃'), findsOneWidget);
   });
+
   testWidgets('特定の条件で、天気予報画面にダイアログが表示され、特定のメッセージが表示されること', (tester) async {
-    final mockWeatherRepository = createFailureMockWeatherRepository(
-      errorMessage: ErrorMessage.unknown,
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) => const Result.failure(ErrorMessage.unknown),
     );
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          weatherRepositoryProvider.overrideWithValue(
-            mockWeatherRepository,
-          ),
-        ],
-        child: const _WeatherTestScreen(),
-      ),
-    );
+    await tester.pumpWidget(providerScope);
     await tester.tap(find.text('Reload'));
     await tester.pump();
     expect(find.byType(AlertDialog), findsOneWidget);
