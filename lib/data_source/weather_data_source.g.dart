@@ -8,7 +8,7 @@ part of 'weather_data_source.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$weatherDataSourceHash() => r'9a67ae92a2eb8e7272982038e38eff47c322b9e6';
+String _$weatherDataSourceHash() => r'c9a021d76db5a838f25b9588063fb735c2470d1f';
 
 /// See also [weatherDataSource].
 @ProviderFor(weatherDataSource)
@@ -19,8 +19,8 @@ final weatherDataSourceProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$weatherDataSourceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 typedef WeatherDataSourceRef = AutoDisposeProviderRef<WeatherDataSource>;
