@@ -79,10 +79,10 @@ void main() {
       minTemperature: 15,
       date: DateTime(2023, 10, 12),
     );
-    final viewModel = create();
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
       (_) async => Result.success(mockWeather),
     );
+    final viewModel = create();
     await viewModel.reloadWeather();
     final beforeState = viewModel.state;
     expect(
