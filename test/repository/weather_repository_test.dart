@@ -60,7 +60,6 @@ void main() {
   });
 
   test('Failure to get weather by other error ', () async {
-    // 実行中に異常が起こった場合のテストのため、Exceptionを使用
     when(mockWeatherDataSource.fetchWeather(any)).thenThrow(Exception());
     final result = await weatherRepository.getWeather(weatherRequest);
     expect(
