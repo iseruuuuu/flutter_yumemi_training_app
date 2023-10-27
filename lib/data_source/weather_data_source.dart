@@ -23,7 +23,8 @@ class WeatherDataSource {
     final encodeWeatherRequest = jsonEncode(weatherRequest);
     final weather =
         await compute(yumemiWeather.syncFetchWeather, encodeWeatherRequest);
-    final decodeData = jsonDecode(weather) as Map<String, dynamic>;
+    final decodeData =
+        await compute(jsonDecode, weather) as Map<String, dynamic>;
     return decodeData;
   }
 }
