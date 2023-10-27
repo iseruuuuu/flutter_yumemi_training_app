@@ -22,7 +22,7 @@ void main() {
 
   test('Success to get weather', () async {
     when(mockWeatherDataSource.fetchWeather(any))
-        .thenAnswer((_) => Future.value(mockWeather));
+        .thenAnswer((_) async => mockWeather);
     final result = await weatherRepository.getWeather(weatherRequest);
     expect(
       result,
