@@ -20,7 +20,7 @@ class WeatherDataSource {
   Future<Map<String, dynamic>> fetchWeather(
     WeatherRequest weatherRequest,
   ) async {
-    final encodeWeatherRequest = await compute(jsonEncode, weatherRequest);
+    final encodeWeatherRequest = jsonEncode(weatherRequest);
     final weather =
         await compute(yumemiWeather.syncFetchWeather, encodeWeatherRequest);
     final decodeData = jsonDecode(weather) as Map<String, dynamic>;
