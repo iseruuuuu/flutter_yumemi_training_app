@@ -72,7 +72,6 @@ void main() {
   });
 
   test('Failure to check "data -> error"', () async {
-    // データ取得の成功
     final mockWeather = WeatherResult(
       weatherCondition: WeatherCondition.sunny,
       maxTemperature: 30,
@@ -94,7 +93,6 @@ void main() {
       ),
     );
 
-    // 天気データがある状態で再度ボタンを押し、エラーになる
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
       (_) async => const Result.failure('error'),
     );
