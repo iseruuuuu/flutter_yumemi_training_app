@@ -12,6 +12,7 @@ import 'weather_view_model_test.mocks.dart';
 
 @GenerateMocks([WeatherRepository])
 void main() {
+  // Arrange
   final mockWeatherRepository = MockWeatherRepository();
   late ProviderContainer container;
 
@@ -31,7 +32,9 @@ void main() {
       container.read(weatherScreenViewModelProvider().notifier);
 
   test('Check initial status', () {
+    // Arrange
     final viewModel = create();
+    // Assert
     expect(
       viewModel.state,
       const WeatherScreenState.initial(),
@@ -39,6 +42,7 @@ void main() {
   });
 
   test('Success to get weather', () async {
+    // Arrange
     final mockWeather = WeatherResult(
       weatherCondition: WeatherCondition.sunny,
       maxTemperature: 30,
@@ -49,7 +53,9 @@ void main() {
       (realInvocation) async => Result.success(mockWeather),
     );
     final viewModel = create();
+    // Act
     await viewModel.reloadWeather();
+    // Assert
     expect(
       viewModel.state,
       const WeatherScreenState.data(
@@ -61,10 +67,13 @@ void main() {
   });
 
   test('Failure to check "initial -> error"', () {
+    // Arrange
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
       (_) async => const Result.failure(''),
     );
+    // Act
     final viewModel = create()..reloadWeather();
+    // Assert
     expect(
       viewModel.state,
       const WeatherScreenState.initial(),
@@ -72,6 +81,7 @@ void main() {
   });
 
   test('Failure to check "data -> error"', () async {
+    // Arrange
     final mockWeather = WeatherResult(
       weatherCondition: WeatherCondition.sunny,
       maxTemperature: 30,
@@ -82,8 +92,10 @@ void main() {
       (_) async => Result.success(mockWeather),
     );
     final viewModel = create();
+    // Act
     await viewModel.reloadWeather();
     final beforeState = viewModel.state;
+    // Assert
     expect(
       viewModel.state,
       const WeatherScreenState.data(
@@ -92,12 +104,14 @@ void main() {
         minTemperature: '15',
       ),
     );
-
+    // Arrange
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
       (_) async => const Result.failure('error'),
     );
+    // Act
     await viewModel.reloadWeather();
     final currentState = viewModel.state;
+    // Assert
     expect(
       currentState,
       beforeState,
