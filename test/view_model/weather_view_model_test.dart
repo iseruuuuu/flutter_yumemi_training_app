@@ -38,17 +38,18 @@ void main() {
     );
   });
 
-  test('Success to get weather', () {
+  test('Success to get weather', () async {
     final mockWeather = WeatherResult(
       weatherCondition: WeatherCondition.sunny,
       maxTemperature: 30,
       minTemperature: 15,
       date: DateTime(2023, 10, 12),
     );
-    when(mockWeatherRepository.getWeather(any)).thenReturn(
-      Result.success(mockWeather),
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (realInvocation) async => Result.success(mockWeather),
     );
-    final viewModel = create()..reloadWeather();
+    final viewModel = create();
+    await viewModel.reloadWeather();
     expect(
       viewModel.state,
       const WeatherScreenState.data(
@@ -60,8 +61,8 @@ void main() {
   });
 
   test('Failure to check "initial -> error"', () {
-    when(mockWeatherRepository.getWeather(any)).thenReturn(
-      const Result.failure(''),
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) async => const Result.failure(''),
     );
     final viewModel = create()..reloadWeather();
     expect(
@@ -70,24 +71,32 @@ void main() {
     );
   });
 
-  test('Failure to check "data -> error"', () {
+  test('Failure to check "data -> error"', () async {
     final mockWeather = WeatherResult(
       weatherCondition: WeatherCondition.sunny,
       maxTemperature: 30,
       minTemperature: 15,
       date: DateTime(2023, 10, 12),
     );
-    when(mockWeatherRepository.getWeather(any)).thenReturn(
-      Result.success(mockWeather),
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) async => Result.success(mockWeather),
     );
-    final viewModel = create()..reloadWeather();
+    final viewModel = create();
+    await viewModel.reloadWeather();
     final beforeState = viewModel.state;
-
-    when(mockWeatherRepository.getWeather(any)).thenReturn(
-      const Result.failure('error'),
+    expect(
+      viewModel.state,
+      const WeatherScreenState.data(
+        weatherCondition: WeatherCondition.sunny,
+        maxTemperature: '30',
+        minTemperature: '15',
+      ),
     );
 
-    viewModel.reloadWeather();
+    when(mockWeatherRepository.getWeather(any)).thenAnswer(
+      (_) async => const Result.failure('error'),
+    );
+    await viewModel.reloadWeather();
     final currentState = viewModel.state;
     expect(
       currentState,

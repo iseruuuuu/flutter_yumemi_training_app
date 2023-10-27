@@ -9,7 +9,7 @@ part of 'weather_screen_view_model.dart';
 // **************************************************************************
 
 String _$weatherScreenViewModelHash() =>
-    r'63ea4dd4200547f68be91e5dd7ac451a2ba7c2c3';
+    r'07a476a55c9f86b82b1457d4eef5b0c38f626538';
 
 /// Copied from Dart SDK
 class _SystemHash {

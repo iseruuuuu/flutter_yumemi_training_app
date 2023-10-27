@@ -71,7 +71,7 @@ void main() {
       weatherCondition: weatherCondition,
     );
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
-      (_) => Result.success(weatherResult),
+      (_) async => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
     // Act
@@ -88,7 +88,7 @@ void main() {
       weatherCondition: weatherCondition,
     );
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
-      (_) => Result.success(weatherResult),
+      (_) async => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
     // Act
@@ -105,7 +105,7 @@ void main() {
       weatherCondition: weatherCondition,
     );
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
-      (_) => Result.success(weatherResult),
+      (_) async => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
     // Act
@@ -122,7 +122,7 @@ void main() {
       maxTemperature: maxTemperature,
     );
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
-      (_) => Result.success(weatherResult),
+      (_) async => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
     // Act
@@ -139,7 +139,7 @@ void main() {
       minTemperature: minTemperature,
     );
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
-      (_) => Result.success(weatherResult),
+      (_) async => Result.success(weatherResult),
     );
     await tester.pumpWidget(providerScope);
     // Act
@@ -152,7 +152,7 @@ void main() {
   testWidgets('特定の条件で、天気予報画面にダイアログが表示され、特定のメッセージが表示されること', (tester) async {
     // Arrange
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
-      (_) => const Result.failure(ErrorMessage.unknown),
+      (_) async => const Result.failure(ErrorMessage.unknown),
     );
     await tester.pumpWidget(providerScope);
     // Act

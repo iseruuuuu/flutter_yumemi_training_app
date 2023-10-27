@@ -16,10 +16,10 @@ class WeatherScreenViewModel extends _$WeatherScreenViewModel {
     return initState;
   }
 
-  Result<WeatherResult, String> reloadWeather() {
+  Future<Result<WeatherResult, String>> reloadWeather() async {
     const weatherRequest = WeatherRequest();
     final result =
-        ref.read(weatherRepositoryProvider).getWeather(weatherRequest)
+        await ref.read(weatherRepositoryProvider).getWeather(weatherRequest)
           ..whenOrNull(
             success: (data) {
               state = WeatherScreenState.data(

@@ -3,8 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:async' as _i4;
+
 import 'package:flutter_training/data_source/weather_data_source.dart' as _i3;
-import 'package:flutter_training/model/weather_request.dart' as _i4;
+import 'package:flutter_training/model/weather_request.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:yumemi_weather/yumemi_weather.dart' as _i2;
 
@@ -47,12 +49,14 @@ class MockWeatherDataSource extends _i1.Mock implements _i3.WeatherDataSource {
       ) as _i2.YumemiWeather);
 
   @override
-  Map<String, dynamic> fetchWeather(_i4.WeatherRequest? weatherRequest) =>
+  _i4.Future<Map<String, dynamic>> fetchWeather(
+          _i5.WeatherRequest? weatherRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #fetchWeather,
           [weatherRequest],
         ),
-        returnValue: <String, dynamic>{},
-      ) as Map<String, dynamic>);
+        returnValue:
+            _i4.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i4.Future<Map<String, dynamic>>);
 }

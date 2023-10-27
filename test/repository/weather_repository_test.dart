@@ -20,9 +20,10 @@ void main() {
   const weatherRequest = TestData.weatherRequest;
   const mockWeather = TestData.weatherMap;
 
-  test('Success to get weather', () {
-    when(mockWeatherDataSource.fetchWeather(any)).thenReturn(mockWeather);
-    final result = weatherRepository.getWeather(weatherRequest);
+  test('Success to get weather', () async {
+    when(mockWeatherDataSource.fetchWeather(any))
+        .thenAnswer((_) async => mockWeather);
+    final result = await weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       Result<WeatherResult, String>.success(
@@ -36,20 +37,20 @@ void main() {
     );
   });
 
-  test('Failure to get weather by YumemiWeatherError.unknown', () {
+  test('Failure to get weather by YumemiWeatherError.unknown', () async {
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.unknown);
-    final result = weatherRepository.getWeather(weatherRequest);
+    final result = await weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       const Result<WeatherResult, String>.failure(ErrorMessage.unknown),
     );
   });
 
-  test('Failure to get weather by invalidParameter ', () {
+  test('Failure to get weather by invalidParameter ', () async {
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.invalidParameter);
-    final result = weatherRepository.getWeather(weatherRequest);
+    final result = await weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       const Result<WeatherResult, String>.failure(
@@ -58,10 +59,9 @@ void main() {
     );
   });
 
-  test('Failure to get weather by other error ', () {
-    // 実行中に異常が起こった場合のテストのため、Exceptionを使用
+  test('Failure to get weather by other error ', () async {
     when(mockWeatherDataSource.fetchWeather(any)).thenThrow(Exception());
-    final result = weatherRepository.getWeather(weatherRequest);
+    final result = await weatherRepository.getWeather(weatherRequest);
     expect(
       result,
       const Result<WeatherResult, String>.failure(ErrorMessage.other),
