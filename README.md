@@ -1,22 +1,50 @@
-# flutter_training
+# 株式会社ゆめみ Flutter 研修
 
-A new Flutter project.
+# 環境構築
 
-## Getting Started
+## リポジトリをクローン
+```
+git clone https://github.com/iseruuuuu/flutter_yumemi_training_app.git
+```
 
-This project is a starting point for a Flutter application.
+## ディレクトリに移動
+```
+cd flutter_yumemi_training_app
+```
 
-A few resources to get you started if this is your first Flutter project:
+## fvmをインストール・使用
+fvmについては[こちらのサイト](https://zenn.dev/altiveinc/articles/flutter-version-management)を参考にしました。
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 1.fvmをインストールする
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Dartでインストール
+```
+dart pub global activate fvm
+```
+
+#### Homebrewでインストール
+```
+brew tap leoafarias/fvm
+brew install fvm
+```
+
+### 2.PATHを通す
+```
+export PATH="$PATH:$HOME/.pub-cache/bin"
+```
+### 3.指定したバージョンをインストール
+
+```
+fvm use 3.13.6
+```
+
+## パッケージをインストール
+
+```
+fvm flutter pub get
+```
 
 
 ## アーキテクチャについての記載
 
 - https://github.com/iseruuuuu/flutter_yumemi_training_app/blob/main/ARCHITECTURE.md
- 
