@@ -97,12 +97,13 @@ class _WeatherBody extends ConsumerWidget {
                               weatherScreenViewModelProvider().notifier,
                             )
                             .reloadWeather();
+                        if (!context.mounted) {
+                          return;
+                        }
+                        Navigator.of(context).pop();
                         result.whenOrNull(
                           failure: (error) {
                             _openErrorDialog(error, context);
-                          },
-                          success: (_) {
-                            Navigator.pop(context);
                           },
                         );
                       },
@@ -119,7 +120,6 @@ class _WeatherBody extends ConsumerWidget {
 }
 
 void _openErrorDialog(String error, BuildContext context) {
-  Navigator.of(context).pop();
   showDialog<void>(
     context: context,
     builder: (_) {
