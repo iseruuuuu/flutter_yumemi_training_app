@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_training/data_source/weather_data_source.dart';
 import 'package:mockito/annotations.dart';
@@ -16,8 +15,7 @@ void main() {
 
   test('Success to get weather data', () async {
     when(mockYumemiWeather.syncFetchWeather(any)).thenReturn(weatherJson);
-    final result =
-        await compute(weatherDataSource.fetchWeather, weatherRequest);
+    final result = await weatherDataSource.fetchWeather(weatherRequest);
     expect(result['weather_condition'], 'sunny');
     expect(result['max_temperature'], 30);
     expect(result['min_temperature'], 15);
@@ -28,7 +26,7 @@ void main() {
     when(mockYumemiWeather.syncFetchWeather(any))
         .thenThrow(YumemiWeatherError.unknown);
     expect(
-      () => compute(weatherDataSource.fetchWeather, weatherRequest),
+      () => weatherDataSource.fetchWeather(weatherRequest),
       throwsA(YumemiWeatherError.unknown),
     );
   });
@@ -37,7 +35,7 @@ void main() {
     when(mockYumemiWeather.syncFetchWeather(any))
         .thenThrow(YumemiWeatherError.invalidParameter);
     expect(
-      () => compute(weatherDataSource.fetchWeather, weatherRequest),
+      () => weatherDataSource.fetchWeather(weatherRequest),
       throwsA(YumemiWeatherError.invalidParameter),
     );
   });
