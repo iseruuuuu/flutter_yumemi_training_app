@@ -66,13 +66,14 @@ void main() {
     );
   });
 
-  test('Failure to check "initial -> error"', () {
+  test('Failure to check "initial -> error"', () async {
     // Arrange
     when(mockWeatherRepository.getWeather(any)).thenAnswer(
       (_) async => const Result.failure(''),
     );
+    final viewModel = create();
     // Act
-    final viewModel = create()..reloadWeather();
+    await viewModel.reloadWeather();
     // Assert
     expect(
       viewModel.state,
