@@ -30,9 +30,11 @@ void main() {
     // Arrange
     when(mockYumemiWeather.syncFetchWeather(any))
         .thenThrow(YumemiWeatherError.unknown);
-    // Act, Assert
+    // Act
+    final result = weatherDataSource.fetchWeather(weatherRequest);
+    // Assert
     expect(
-      () => weatherDataSource.fetchWeather(weatherRequest),
+      () => result,
       throwsA(YumemiWeatherError.unknown),
     );
   });
