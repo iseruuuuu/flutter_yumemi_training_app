@@ -15,15 +15,19 @@ import 'weather_repository_test.mocks.dart';
   WeatherDataSource,
 ])
 void main() {
+  // Arrange
   final mockWeatherDataSource = MockWeatherDataSource();
   final weatherRepository = WeatherRepository(mockWeatherDataSource);
   const weatherRequest = TestData.weatherRequest;
   const mockWeather = TestData.weatherMap;
 
   test('Success to get weather', () async {
+    // Arrange
     when(mockWeatherDataSource.fetchWeather(any))
         .thenAnswer((_) async => mockWeather);
+    // Act
     final result = await weatherRepository.getWeather(weatherRequest);
+    // Assert
     expect(
       result,
       Result<WeatherResult, String>.success(
@@ -38,9 +42,12 @@ void main() {
   });
 
   test('Failure to get weather by YumemiWeatherError.unknown', () async {
+    // Arrange
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.unknown);
+    // Act
     final result = await weatherRepository.getWeather(weatherRequest);
+    // Assert
     expect(
       result,
       const Result<WeatherResult, String>.failure(ErrorMessage.unknown),
@@ -48,9 +55,12 @@ void main() {
   });
 
   test('Failure to get weather by invalidParameter ', () async {
+    // Arrange
     when(mockWeatherDataSource.fetchWeather(any))
         .thenThrow(YumemiWeatherError.invalidParameter);
+    // Act
     final result = await weatherRepository.getWeather(weatherRequest);
+    // Assert
     expect(
       result,
       const Result<WeatherResult, String>.failure(
@@ -60,8 +70,11 @@ void main() {
   });
 
   test('Failure to get weather by other error ', () async {
+    // Arrange
     when(mockWeatherDataSource.fetchWeather(any)).thenThrow(Exception());
+    // Act
     final result = await weatherRepository.getWeather(weatherRequest);
+    // Assert
     expect(
       result,
       const Result<WeatherResult, String>.failure(ErrorMessage.other),
